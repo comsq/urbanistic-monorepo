@@ -64,8 +64,8 @@ class EventViewSet(mixins.ListModelMixin,
 
     pagination_class = pagination.LimitOffsetPagination
 
-    serializer_class = serializers.FeedEventSerializer
-    list_serializer_class = serializers.EventSerializer
+    serializer_class = erializers.EventSerializers
+    list_serializer_class = serializers.FeedEventSerializer
 
     lookup_field = 'slug'
 
