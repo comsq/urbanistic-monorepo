@@ -15,7 +15,6 @@ class EventTagSerializer(serializers.ModelSerializer):
         fields = (
             'slug',
             'title',
-            'icon',
         )
 
 
