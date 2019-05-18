@@ -1,5 +1,5 @@
 import React from 'react'
-import Themes from '../../common-components/themes';
+import Themes from '../../components/themes';
 import slugs from "../../constants/slugs";
 const themes = [
     {title: 'спорт', slug: slugs.sport},
