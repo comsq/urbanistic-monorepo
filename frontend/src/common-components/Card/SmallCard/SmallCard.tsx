@@ -9,24 +9,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import styles from './SmallCard.module.css'
-
-interface Filter {
-    id: string
-    name: string
-}
-
-interface EventProp {
-    title: string
-    date: string
-    image: string
-    description: string
-    filters: Filter[]
-    countLikes: number
-}
+import { IEventSmall } from '../../../common/types/event';
 
 
-
-const SmallCard: React.FC<EventProp> = ({ title, date, image, description, filters, countLikes }) => {
+const SmallCard: React.FC<IEventSmall> = ({ title, date, image, description, tags, likesCount, slug }) => {
 
     return (
         <Card className={styles.smallCard_card}>
@@ -39,10 +25,11 @@ const SmallCard: React.FC<EventProp> = ({ title, date, image, description, filte
                 title={title}
                 subheader={date}
             />
+            <Link component="a" href={`/event/${slug}`}>
             <CardMedia
                 className={styles.smallCard_media}
                 image={image}
-            />
+            /></Link>
             <CardContent>
                 <Typography component="p">
                     {description}
@@ -51,19 +38,19 @@ const SmallCard: React.FC<EventProp> = ({ title, date, image, description, filte
             <CardContent>
                 <div className={styles.smallCard_actionBlock}>
                     <div className={styles.smallCard_filters}>
-                        {filters.map(filter => (
-                            <Link component="a" href={`/events?${filter.id}`}>
+                        {tags.map(tag => (
+                            <Link component="a" href={`/events/${tag.slug}`}>
                                 <Typography component="p" className={styles.smallCard_filter}>
-                                    {filter.name}
+                                    {tag.title}
                                 </Typography>
                             </Link>
                         ))}
                     </div>
                     <div className={styles.smallCard_likes}>
-                        <Typography component="p" className={styles.smallCard_count_likes}>
-                            {countLikes}
-                        </Typography>
-                        <IconButton aria-label="Add to favorites" onClick={}>
+                        {likesCount && <Typography component="p" className={styles.smallCard_count_likes}>
+                            {likesCount}
+                        </Typography>}
+                        <IconButton aria-label="Add to favorites" onClick={() => console.log('like')}>
                             <FavoriteIcon />
                         </IconButton>
                     </div>
