@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY') if IS_PRODUCTION else 'na7q-_ho8a0#bkb=7f41t4tc9*k14*8u2)o3jwr%b1c6s90%t5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = not IS_PRODUCTION
+DEBUG = bool(os.environ.get('DEBUG')) or not IS_PRODUCTION
 
 ALLOWED_HOSTS = ['*']
 
