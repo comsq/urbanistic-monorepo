@@ -4,7 +4,7 @@ import Header from './header';
 import styles from './layout.module.css';
 
 type Props = {
-    children: ReactNode
+    children?: ReactNode
     customHeader?: ReactNode
 }
 

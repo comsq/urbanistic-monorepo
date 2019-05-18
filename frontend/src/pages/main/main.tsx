@@ -1,27 +1,49 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import SmallCard from '../../components/card/smallCard';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useQueryParam, StringParam } from 'use-query-params';
-import { DispatchProps, StateProps } from './index';
+
+import { IApiError } from '../../common/types/error';
+import { IEvent } from '../../common/types/event';
+import { IFetchItemsRequest } from '../../redux/events/types';
+
+import SmallCard from '../../components/card/smallCard';
 import Layout from '../../components/layout';
 import Search from '../../components/search';
-import styles from './main.module.css';
+import Loading from '../../components/loading';
 
-interface CardsListProps extends StateProps, DispatchProps {};
+interface IProps {
+    count: number;
+    events: IEvent[];
+    loadingEvents: boolean;
+    fetchEvents(payload: IFetchItemsRequest): void;
+}
 
 const COUNT_CARD = 5;
 
-
-const Main: React.FC<CardsListProps> = ({ events, count, fetchEvents, loadingEvent }) => {
+const Main: React.FC<IProps> = ({
+    events,
+    count,
+    loadingEvents,
+    fetchEvents
+}) => {
     const [offset, setOffset] = useState(0);
     const [search, setSearch] = useQueryParam('search', StringParam);
 
     const loadMore = useCallback(() => {
-        fetchEvents({ limit: COUNT_CARD, offset, search: search || '' });
+        fetchEvents({
+            limit: COUNT_CARD,
+            offset,
+            search: search || ''
+        });
         setOffset(offset + COUNT_CARD);
     }, [search]);
 
     const loadAgain = useCallback(() => {
-        fetchEvents({ limit: COUNT_CARD, offset: 0, search: search || '', reset: true });
+        fetchEvents({
+            limit: COUNT_CARD,
+            offset: 0,
+            search: search || '',
+            reset: true
+        });
         setOffset(offset + COUNT_CARD);
     }, [search]);
 
@@ -31,12 +53,13 @@ const Main: React.FC<CardsListProps> = ({ events, count, fetchEvents, loadingEve
     }, [loadAgain]);
 
     const handleScroll = useCallback(() => {
-        if (count > offset) {
-            if (window.innerHeight + document.documentElement.scrollTop > document.documentElement.scrollHeight - 200) {
-                loadMore()
-            }
+        const heightOffset = window.innerHeight + document.documentElement.scrollTop;
+        const scrollOffset = document.documentElement.scrollHeight - 200;
+
+        if (count > offset && heightOffset > scrollOffset) {
+            loadMore();
         }
-    }, [loadMore])
+    }, [loadMore]);
 
     useEffect(() => {
         handleScroll()
@@ -45,9 +68,8 @@ const Main: React.FC<CardsListProps> = ({ events, count, fetchEvents, loadingEve
 
         return () => {
             document.removeEventListener('scroll', handleScroll);
-        }
-    }, [handleScroll])
-
+        };
+    }, [handleScroll]);
 
     useEffect(() => {
         loadAgain()
@@ -56,7 +78,9 @@ const Main: React.FC<CardsListProps> = ({ events, count, fetchEvents, loadingEve
     return (
         <Layout>
             <Search value={search || ''} setQuery={setQuery}/>
-            {events && events.map(event => (
+            {loadingEvents ? (
+                <Loading />
+            ) : events && events.map(event => (
                 <SmallCard
                     key={event.slug}
                     slug={event.slug}
@@ -68,9 +92,9 @@ const Main: React.FC<CardsListProps> = ({ events, count, fetchEvents, loadingEve
                     likesCount={event.likesCount}
                 />
             ))}
-            {loadingEvent ? <p className={styles.loading}>Loading ...</p> : null}
         </Layout>
     )
 };
 
-export default Main
+export default Main;
+
