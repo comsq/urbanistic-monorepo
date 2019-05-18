@@ -3,8 +3,8 @@ import { IEvent } from '../../common/types/event';
 import { SortDirection } from '../../common/types/request';
 
 export interface IFetchRequest {
-    limit: string;
-    offset: string;
+    limit: number;
+    offset: number;
     search?: string;
     sortBy?: string;
     sortDirection?: SortDirection;

@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import Header from '../header';
-import Footer from '../footer';
+// import Footer from '../footer';
 
 import styles from './layout.module.css';
 
@@ -14,7 +14,7 @@ const Layout: React.FC<Props> = ({ children }) => (
         <div className={styles.layout_content}>
             {children}
         </div>
-        <Footer />
+        {/*<Footer />*/}
     </div>
 );
 

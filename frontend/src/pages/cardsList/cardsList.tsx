@@ -1,36 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SmallCard from '../../components/card/smallCard';
+import { DispatchProps, StateProps } from './index';
 
-const testData = {
-    title: 'Shri mp and Chorizo Paella',
-    date: 'September 14, 2016',
-    image: '',
-    description: 'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.',
-    filters: [{
-        id: '1',
-        name: 'Sport',
-    }, {
-        id: '2',
-        name: 'Free',
-    }],
-    countLikes: 54,
-}
+interface CardsListProps extends StateProps, DispatchProps {}
 
-const events = [testData, testData, testData]
+const CardsList: React.FC<CardsListProps> = ({ events, fetchEvents }) => {
 
-const CardsList = () => (
-    <div>
-        {events.map(event => (
-            <SmallCard
-                title={event.title}
-                date={event.date}
-                image={event.image}
-                description={event.description}
-                filters={event.filters}
-                countLikes={event.countLikes}
-            />
-        ))}
-    </div>
-);
+    useEffect(() => {
+        fetchEvents({ limit: 2, offset: 0 })
+    }, []);
+
+    return (
+        <>
+            {events && events.map(event => (
+                <SmallCard
+                    key={event.slug}
+                    slug={event.slug}
+                    title={event.title}
+                    date={event.date}
+                    image={event.image}
+                    description={event.description}
+                    tags={event.tags}
+                    likesCount={event.likesCount}
+                />
+            ))}
+        </>
+)};
 
 export default CardsList
