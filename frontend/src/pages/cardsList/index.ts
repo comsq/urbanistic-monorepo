@@ -1,5 +1,5 @@
 import { IEventsStore } from "../../redux/events/types";
-import CardsList from './CardsList';
+import CardsList from './cardsList';
 import { connect, ResolveThunks } from "react-redux";
 import { fetchEvents } from '../../redux/events/actions';
 
@@ -11,7 +11,9 @@ const mapDispatchToProps = {
     fetchEvents: fetchEvents.request
 }
 
-const mapStateToProps = ({ events }: SubStore) => ({ events: events.items })
+const mapStateToProps = ({ events }: SubStore) => {
+    return { events: events.items }
+}
 
 export type StateProps = ReturnType<typeof mapStateToProps>
 export type DispatchProps = ResolveThunks<typeof mapDispatchToProps>

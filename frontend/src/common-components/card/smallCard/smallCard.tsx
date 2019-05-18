@@ -8,7 +8,8 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import styles from './SmallCard.module.css'
+import styles from './smallCard.module.css';
+import { format } from 'date-fns';
 import { IEventSmall } from '../../../common/types/event';
 
 
@@ -23,7 +24,7 @@ const SmallCard: React.FC<IEventSmall> = ({ title, date, image, description, tag
                     </Avatar>
                 }
                 title={title}
-                subheader={date}
+                subheader={date ? format(date, 'D MMMM YYYY') : ''}
             />
             <Link component="a" href={`/event/${slug}`}>
             <CardMedia

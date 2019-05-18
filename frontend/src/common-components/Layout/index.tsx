@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
-import Header from "../Header";
-import Footer from "../Footer";
-import styles from './Layout.module.css';
+import Header from "../header";
+// import Footer from "../footer";
+import styles from './layout.module.css';
 
 type Props = {
     children: ReactNode
@@ -12,7 +12,7 @@ const Layout: React.FC<Props> = ({ children }) => (
         <div className={styles.layout_content}>
             {children}
         </div>
-        <Footer />
+        {/*<Footer />*/}
     </>
 )
 

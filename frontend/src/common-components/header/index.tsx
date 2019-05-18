@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import styles from './Header.module.css';
+import styles from './header.module.css';
 import {FilterList} from '@material-ui/icons';
 import {AccountCircle} from '@material-ui/icons';
 

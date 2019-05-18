@@ -18,7 +18,9 @@
     "react-scripts": "3.0.1",
     "redux": "latest",
     "redux-saga": "1.0.2",
-    "typesafe-actions": "4.3.0"
+    "typesafe-actions": "4.3.0",
+    "date-fns": "latest",
+    "react-infinite-scroller": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

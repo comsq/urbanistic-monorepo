@@ -3,7 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from '@material-ui/icons/Search';
 import { debounce } from 'lodash';
-import styles from './Search.module.css'
+import styles from './search.module.css'
 
 type Props = {
     findEventsList(): void
