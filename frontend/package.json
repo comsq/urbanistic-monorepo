@@ -12,7 +12,7 @@
     "react-scripts": "3.0.1",
     "typescript": "3.4.5",
     "react-router-dom": "latest",
-    "react-redux": "latest",
+    "react-redux": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,6 +23,11 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "browserslist": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+  ],
   "devDependencies": {
     "@types/react-redux": "7.0.9",
     "@types/react-router-dom": "4.3.3"
