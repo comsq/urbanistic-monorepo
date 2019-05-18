@@ -45,9 +45,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'storages',
-    'oauth2_provider',
     'social_django',
-    'rest_framework_social_oauth2',
+    'rest_social_auth',
 
     'wtg',
 ]
@@ -177,11 +176,6 @@ else:
 # Rest framework
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
-        'rest_framework_social_oauth2.authentication.SocialAuthentication',
-    ),
-
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
@@ -209,16 +203,13 @@ AUTHENTICATION_BACKENDS = (
     # GitHub
     'social_core.backends.github.GithubOAuth2',
 
-    # django-rest-framework-social-oauth2
-    'rest_framework_social_oauth2.backends.DjangoOAuth2',
-
     # Django
     'django.contrib.auth.backends.ModelBackend',
 )
 
 # Facebook configuration
-SOCIAL_AUTH_FACEBOOK_KEY = '<your app id goes here>'
-SOCIAL_AUTH_FACEBOOK_SECRET = '<your app secret goes here>'
+SOCIAL_AUTH_FACEBOOK_KEY = '2245802555733171'
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('FB_OAUTH_SECRET')
 
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
@@ -226,9 +217,8 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
 }
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = '6988779'
+SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 SOCIAL_AUTH_VK_OAUTH2_SECRET = os.environ.get('VK_OAUTH2_SECRET')
 
-SESSION_COOKIE_DOMAIN = 'herokuapp.com'
-LOGIN_REDIRECT_URL = 'https://w-t-g.herokuapp.com'
-SESSION_COOKIE_SAMESITE = None
-SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+SOCIAL_AUTH_GITHUB_KEY = '8f98648f6231806546f8'
+SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('GITHUB_OAUTH_SECRET')

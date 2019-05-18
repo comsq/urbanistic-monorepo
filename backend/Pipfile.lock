@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "7b99a1ef1f0e61591523107ce3ab28fab472bb6b7d0e3c2d112e516d90c10f00"
+            "sha256": "c47444f1848837ecba5a05a6f554c5f55e4ccce1a42ca60f99743b07a9edc013"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -259,6 +259,14 @@
                 "sha256:d3ed0c8f2e3bbc6b344fa63d6f933745ab394469da38db16bdddb461c7e25140"
             ],
             "version": "==1.2.0"
+        },
+        "rest-social-auth": {
+            "hashes": [
+                "sha256:74535e181ee6efb73024150910aad624fd58474c524fd15f11b995f75664e817",
+                "sha256:89034b02e11d82f8ebd71dda3073340c35c135880f3f4e02d1d676737decd0d2"
+            ],
+            "index": "pypi",
+            "version": "==2.1.0"
         },
         "s3transfer": {
             "hashes": [

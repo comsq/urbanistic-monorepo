@@ -28,7 +28,7 @@ router.register(r'register', views.UserCreateAPIView)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('auth/', include('rest_framework_social_oauth2.urls')),
+    path('login/', include('rest_social_auth.urls_token')),
     path('admin/', admin.site.urls),
 ]
 
