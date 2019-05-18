@@ -4,3 +4,4 @@
 *.pyc
 
 /frontend/.idea/
+/node_modules/
