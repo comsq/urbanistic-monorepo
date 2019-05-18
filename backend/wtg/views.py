@@ -41,9 +41,6 @@ class EventFilterSet(FilterSet):
 
 class EventViewSet(mixins.ListModelMixin,
                    mixins.RetrieveModelMixin,
-                   mixins.CreateModelMixin,
-                   mixins.UpdateModelMixin,
-                   mixins.DestroyModelMixin,
                    viewsets.GenericViewSet):
     queryset = models.Event.objects.all()
 
