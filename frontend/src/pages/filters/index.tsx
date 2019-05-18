@@ -1,7 +1,7 @@
 import React from 'react'
 import Themes from '../../components/themes';
 import slugs from "../../constants/slugs";
-import Header from './header';
+import BackHeader from './backHeader';
 import Layout from "../../components/layout";
 
 const themes = [
@@ -16,7 +16,7 @@ const themes = [
 
 export default function Filters() {
     return <div>
-        <Layout customHeader={<Header />}>
+        <Layout customHeader={<BackHeader text={'фильтры'}/>}>
             <Themes themes={themes}/>
         </Layout>
     </div>
