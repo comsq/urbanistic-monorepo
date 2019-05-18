@@ -4,7 +4,6 @@ import { Route, Switch } from 'react-router';
 
 import CreateEvent from './pages/createEvent';
 import Event from './pages/event';
-import Events from './pages/events';
 import Main from './pages/main';
 import NotFound from './pages/notFound';
 import Filters from './pages/filters';
@@ -21,7 +20,6 @@ const Router = () => (
         <Switch>
             <Route path={createEventUrl.template} component={CreateEvent}/>
             <Route path={eventUrl.template} component={Event}/>
-            <Route path={filtersUrl.template} component={Events}/>
             <Route path={filtersUrl.template} component={Filters}/>
             <Route exact path={indexUrl.template} component={Main}/>
             <Route component={NotFound}/>

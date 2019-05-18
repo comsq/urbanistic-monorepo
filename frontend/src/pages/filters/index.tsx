@@ -1,7 +1,10 @@
 import React from 'react'
+
 import Themes from '../../components/themes';
-import slugs from "../../constants/slugs";
-import Layout from "../../components/layout";
+import Layout from '../../components/layout';
+
+import slugs from '../../constants/slugs';
+
 const themes = [
     {title: 'спорт', slug: slugs.sport},
     {title: 'шоппинг', slug: slugs.shopping},
@@ -13,7 +16,9 @@ const themes = [
 ];
 
 export default function Filters() {
-    return <Layout >
-        <Themes themes={themes}/>
-    </Layout>
+    return (
+        <Layout >
+            <Themes themes={themes}/>
+        </Layout>
+    );
 }

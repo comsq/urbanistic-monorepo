@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import CustomCheckbox from "./customCheckbox";
+import CustomCheckbox from './customCheckbox';
+
 import styles from './themes.module.css';
 
 type Props = {
-    themes?: Array<{title: string, slug: string}>
+    themes?: Array<{title: string, slug: string}>;
 }
 export default class Themes extends Component<Props> {
     render() {

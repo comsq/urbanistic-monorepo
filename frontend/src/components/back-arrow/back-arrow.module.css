@@ -1,0 +1,24 @@
+.back-arrow
+{
+    position: absolute;
+    top: 22px;
+    left: 12px;
+
+    width: 12px;
+    height: 20px;
+
+    color: #fff;
+    cursor: pointer;
+
+    transition: color .3s ease;
+}
+
+.back-arrow svg
+{
+    fill: currentColor;
+}
+
+.back-arrow:hover
+{
+    color: #d3d3d3;
+}

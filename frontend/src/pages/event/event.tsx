@@ -19,11 +19,11 @@ class EventPage extends Component<IProps> {
     }
 
     public render() {
-        const { slug } = this.props;
+        const { slug, history } = this.props;
 
         return (
             <Layout customHeader={<div />}>
-                <Event slug={slug} />
+                <Event history={history} slug={slug} />
             </Layout>
         )
     }
