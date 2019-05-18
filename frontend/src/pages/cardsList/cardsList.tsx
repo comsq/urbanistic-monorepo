@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import SmallCard from '../../components/card/smallCard';
 import { DispatchProps, StateProps } from './index';
+import Header from "../../components/layout/header";
+import Layout from "../../components/layout";
 
 interface CardsListProps extends StateProps, DispatchProps {}
 
@@ -11,7 +13,7 @@ const CardsList: React.FC<CardsListProps> = ({ events, fetchEvents }) => {
     }, []);
 
     return (
-        <>
+        <Layout>
             {events && events.map(event => (
                 <SmallCard
                     key={event.slug}
@@ -24,7 +26,7 @@ const CardsList: React.FC<CardsListProps> = ({ events, fetchEvents }) => {
                     likesCount={event.likesCount}
                 />
             ))}
-        </>
+        </Layout>
 )};
 
 export default CardsList

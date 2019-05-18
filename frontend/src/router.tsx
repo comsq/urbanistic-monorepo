@@ -20,16 +20,14 @@ import {
 
 const Router = () => (
     <BrowserRouter>
-        <Layout>
-            <Switch>
-                <Route path={createEventUrl.template} component={CreateEvent}/>
-                <Route path={eventUrl.template} component={Card}/>
-                <Route path={eventsUrl.template} component={CardsList}/>
-                <Route path={filtersUrl.template} component={Filters}/>
-                <Route exact path={indexUrl.template} component={Main}/>
-                <Route component={NotFound}/>
-            </Switch>
-        </Layout>
+        <Switch>
+            <Route path={createEventUrl.template} component={CreateEvent}/>
+            <Route path={eventUrl.template} component={Card}/>
+            <Route path={eventsUrl.template} component={CardsList}/>
+            <Route path={filtersUrl.template} component={Filters}/>
+            <Route exact path={indexUrl.template} component={Main}/>
+            <Route component={NotFound}/>
+        </Switch>
     </BrowserRouter>
 );
 
