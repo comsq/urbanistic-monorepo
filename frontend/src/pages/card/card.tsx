@@ -1,5 +1,6 @@
 import React from 'react'
+import Layout from "../../components/layout";
 
-const Card = () => (<div>Card</div>);
+const Card = () => (<Layout>Card</Layout>);
 
 export default Card

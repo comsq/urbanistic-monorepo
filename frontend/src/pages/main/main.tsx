@@ -1,11 +1,12 @@
 import React from 'react'
-import Header from "./header";
+import Layout from "../../components/layout";
 
 function Main() {
-    return <div>
-        <Header />
+    return (
+        <Layout>
         главноя страница
-    </div>
+        </Layout>
+    )
 }
 
 export default Main

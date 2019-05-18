@@ -1,5 +1,6 @@
 import React from 'react'
+import Layout from "../../components/layout";
 
-const CreateEvent = () => (<div>CreateEvent</div>)
+const CreateEvent = () => (<Layout>CreateEvent</Layout>)
 
 export default CreateEvent

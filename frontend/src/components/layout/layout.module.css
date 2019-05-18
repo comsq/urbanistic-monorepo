@@ -1,7 +1,3 @@
-.layout_content {
-    padding: 30px 20px;
-}
-
 .layoutWrapper {
     width: 100%;
     max-width: 500px;
@@ -17,4 +13,5 @@
     padding: 30px 10px;
     margin: auto;
     width: calc(100% - 20px);
+    background-color: #fff;
 }
