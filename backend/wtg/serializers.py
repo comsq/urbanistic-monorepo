@@ -62,3 +62,22 @@ class FeedEventSerializer(serializers.ModelSerializer):
             'likes_count',
             'date',
         )
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.User
+        fields = ('username', 'email', 'password', 'tags')
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        user = models.User(
+            username=validated_data['username'],
+            email=validated_data['email'],
+        )
+        tags = models.Tag.objects.filter(id__in=validated_data.get('tags', []))
+        for tag in tags:
+            user.tags.add(tag)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
