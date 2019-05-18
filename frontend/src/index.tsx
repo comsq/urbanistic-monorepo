@@ -18,15 +18,15 @@ import reducer from './redux/reducers'
 ReactDOM.render(
     <Provider store={createStore(reducer)}>
         <BrowserRouter>
-            <Switch>
-                <Layout>
-                <Route path="/create/event" component={CreateEvent}/>
-                <Route path="/card" component={Card}/>
-                <Route path="/cards" component={CardsList}/>
-                <Route exact path="/" component={Main}/>
-                <Route component={NotFound}/>
-                </Layout>
-            </Switch>
+            <Layout>
+                <Switch>
+                    <Route path="/create/event" component={CreateEvent}/>
+                    <Route path="/card" component={Card}/>
+                    <Route path="/cards" component={CardsList}/>
+                    <Route exact path="/" component={Main}/>
+                    <Route component={NotFound}/>
+                </Switch>
+            </Layout>
         </BrowserRouter>
     </Provider>
     , document.getElementById('root'));
