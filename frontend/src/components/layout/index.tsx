@@ -9,13 +9,13 @@ type Props = {
 }
 
 const Layout: React.FC<Props> = ({ children }) => (
-    <>
+    <div className={styles.layoutWrapper}>
         <Header />
         <div className={styles.layout_content}>
             {children}
         </div>
         <Footer />
-    </>
+    </div>
 );
 
 export default Layout

@@ -1,3 +1,12 @@
 .layout_content {
     padding: 30px 20px;
 }
+
+.layoutWrapper {
+    max-width: 400px;
+    position: absolute;
+    background-color: #fff;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

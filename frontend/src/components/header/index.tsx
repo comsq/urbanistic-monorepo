@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styles from './header.module.css';
-import { FilterList } from '@material-ui/icons';
-import { AccountCircle } from '@material-ui/icons';
+import FilterList from '@material-ui/icons/FilterList';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 export default class Header extends Component {
     render() {
