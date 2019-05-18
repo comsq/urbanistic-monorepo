@@ -1,5 +1,6 @@
+import Checkbox from '@material-ui/core/Checkbox';
 import React, {Component} from 'react';
-import Checkbox from "@material-ui/core/Checkbox";
+
 import CheckboxIcon from '../checkboxIcon';
 
 type Props = {

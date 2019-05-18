@@ -11,23 +11,18 @@
 }
 
 .smallCard_actionBlock {
-    display: flex;
     justify-content: space-between;
-    width: 100%;
 }
 
 .smallCard_filters {
-    width: 100%;
-}
-
-.smallCard_filters,
-.smallCard_likes {
-    display: flex;
     align-items: center;
+    padding-right: 20px;
 }
 
-.smallCard_filter {
-    padding-right: 20px;
+.smallCard_actionBlock,
+.smallCard_filters {
+    display: flex;
+    width: 100%;
 }
 
 .smallCard_count_likes {
