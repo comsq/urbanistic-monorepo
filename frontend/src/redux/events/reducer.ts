@@ -15,7 +15,7 @@ const initialState: IEventsStore = {
     offset: 0,
     search: '',
     sortBy: 'date',
-    sortDirection: 'ASC'
+    sortDirection: 'ASC',
 };
 
 export default function (state = initialState, action: EventsActions) {
@@ -54,12 +54,12 @@ export default function (state = initialState, action: EventsActions) {
             };
         }
         case getType(fetchEvents.success): {
-            const { count, items } = action.payload;
+            const { count, items, reset } = action.payload;
 
             return {
                 ...state,
                 count,
-                items: state.items.concat(items),
+                items: reset ? items : state.items.concat(items),
                 fetchItemsStarted: false,
                 fetchItemsError: null
             }
