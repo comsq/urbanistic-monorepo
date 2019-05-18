@@ -63,7 +63,7 @@ const SmallCard: React.FC<EventProp> = ({ title, date, image, description, filte
                         <Typography component="p" className={styles.smallCard_count_likes}>
                             {countLikes}
                         </Typography>
-                        <IconButton aria-label="Add to favorites">
+                        <IconButton aria-label="Add to favorites" onClick={}>
                             <FavoriteIcon />
                         </IconButton>
                     </div>

@@ -19,7 +19,7 @@ const testData = {
 const events = [testData, testData, testData]
 
 const CardsList = () => (
-    <div>
+    <>
         {events.map(event => (
             <SmallCard
                 title={event.title}
@@ -30,7 +30,7 @@ const CardsList = () => (
                 countLikes={event.countLikes}
             />
         ))}
-    </div>
+    </>
 );
 
 export default CardsList
