@@ -13,7 +13,11 @@
     "typescript": "3.4.5",
     "react-router-dom": "latest",
     "react-redux": "latest",
-    "redux": "latest"
+    "redux": "latest",
+    "@material-ui/styles": "latest",
+    "@material-ui/core": "latest",
+    "@material-ui/icons": "latest",
+    "classnames": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,11 +29,12 @@
     "extends": "react-app"
   },
   "browserslist": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
   ],
   "devDependencies": {
+    "@types/classnames": "2.2.7",
     "@types/react-redux": "7.0.9",
     "@types/react-router-dom": "4.3.3"
   }

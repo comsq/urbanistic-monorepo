@@ -1,0 +1,34 @@
+.smallCard_card {
+    max-width: 400px;
+    margin-bottom: 15px;
+}
+
+.smallCard_media {
+    height: 0;
+    /* 16:9*/
+    padding-top: 56.25%;
+}
+
+.smallCard_actionBlock {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.smallCard_filters {
+    width: 100%;
+}
+
+.smallCard_filters,
+.smallCard_likes {
+    display: flex;
+    align-items: center;
+}
+
+.smallCard_filter {
+    padding-right: 20px;
+}
+
+.smallCard_count_likes {
+    padding-right: 10px;
+}
