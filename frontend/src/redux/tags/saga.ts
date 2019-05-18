@@ -1,13 +1,13 @@
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 
-import { events } from '../../urls/backend';
+import { tags } from '../../urls/backend';
 import fetch from '../../common/fetch';
 
-import {fetchEvents} from './actions';
+import {fetchTags} from './actions';
 
-function* fetchEventsSaga(action: ActionType<typeof fetchEvents.request>) {
-    const url = events.list.build();
+function* fetchTagsSaga(action: ActionType<typeof fetchTags.request>) {
+    const url = tags.list.build();
     const props = {
         url,
         method: 'GET',
@@ -17,14 +17,14 @@ function* fetchEventsSaga(action: ActionType<typeof fetchEvents.request>) {
     try {
         const data = yield call(fetch, props);
 
-        yield put(fetchEvents.success({ count: 5 , items: data.data }));
+        yield put(fetchTags.success({items: data.data}));
     } catch (error) {
-        yield put(fetchEvents.failure(error));
+        yield put(fetchTags.failure(error));
     }
 }
 
 export default function*() {
     yield all([
-        takeEvery(fetchEvents.request, fetchEventsSaga)
+        takeEvery(fetchTags.request, fetchTagsSaga)
     ]);
 }

@@ -9,7 +9,7 @@ export const fetchEvents = createAsyncAction(
     'events/FETCH_FAILURE'
 )<IFetchRequest, IFetchResponse, IApiError>();
 
-const actions = { fetchEvents };
+const actions = { fetchEvents};
 
 export type EventsActions = ActionType<typeof actions>;
 

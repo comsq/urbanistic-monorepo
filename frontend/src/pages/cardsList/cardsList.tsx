@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import SmallCard from '../../components/card/smallCard';
 import { DispatchProps, StateProps } from './index';
-import Header from "../../components/layout/header";
 import Layout from "../../components/layout";
 
 interface CardsListProps extends StateProps, DispatchProps {}

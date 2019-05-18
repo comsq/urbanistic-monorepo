@@ -8,32 +8,31 @@ import LocalFlorist from '@material-ui/icons/LocalFlorist';
 import LocalGroceryStore from '@material-ui/icons/LocalGroceryStore';
 import LocationCity from '@material-ui/icons/LocationCity';
 
-export default function slugToIcon(slug: string) {
-    const color = 'inherit';
+export default function slugToIcon(slug: string, color: 'inherit' = 'inherit', fontSize: 'inherit' = 'inherit') {
     switch (slug) {
         case slugs.sport: {
-            return <DirectionsWalk color={color}/>;
+            return <DirectionsWalk fontSize={fontSize} color={color}/>;
         }
         case slugs.children: {
-            return <ChildFriendly color={color}/>;
+            return <ChildFriendly fontSize={fontSize} color={color}/>;
         }
         case slugs.culture: {
-            return <LocationCity color={color}/>;
+            return <LocationCity fontSize={fontSize} color={color}/>;
         }
         case slugs.masterClasses: {
-            return <CameraAlt color={color}/>;
+            return <CameraAlt fontSize={fontSize} color={color}/>;
         }
         case slugs.food: {
-            return <Fastfood color={color}/>;
+            return <Fastfood fontSize={fontSize} color={color}/>;
         }
         case slugs.shopping: {
-            return <LocalGroceryStore color={color}/>;
+            return <LocalGroceryStore fontSize={fontSize} color={color}/>;
         }
         case slugs.volunteerism: {
-            return <LocalFlorist color={color}/>;
+            return <LocalFlorist fontSize={fontSize} color={color}/>;
         }
         default: {
-            return <DirectionsWalk color={color}/>;
+            return <DirectionsWalk fontSize={fontSize} color={color}/>;
         }
     }
 }

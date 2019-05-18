@@ -1,5 +1,7 @@
 .theme {
+    font-size: 40px;
     height: 100px;
+    padding: 0 20px;
     min-width: 140px;
     display: flex;
     align-items: center;
@@ -11,8 +13,8 @@
 }
 
 .icon {
-    width: 52px;
-    height: 52px;
+    margin-right: 20px;
+    height: 42px;
 }
 
 .title {

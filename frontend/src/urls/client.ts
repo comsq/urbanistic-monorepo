@@ -7,6 +7,6 @@ export const eventUrl = new Url<IEventParams>('/events/:slug/');
 
 export const eventsUrl = new Url('/events/');
 
-export const filtersUrl = new Url('/filters/');
+export const tagsUrl = new Url('/tags/');
 
 export const indexUrl = new Url('/');

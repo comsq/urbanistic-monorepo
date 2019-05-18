@@ -1,6 +1,6 @@
 import { getType } from 'typesafe-actions';
 
-import { EventsActions, fetchEvents } from './actions';
+import {EventsActions, fetchEvents} from './actions';
 import { IEventsStore } from './types';
 
 const initialState: IEventsStore = {
