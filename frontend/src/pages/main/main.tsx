@@ -1,57 +1,48 @@
-import React, { useEffect, useState } from 'react';
-
-import { IEvent } from '../../common/types/event';
-import { IFetchItemsRequest } from '../../redux/events/types';
-
+import React, {useEffect, useState} from 'react';
 import SmallCard from '../../components/card/smallCard';
+import { DispatchProps, StateProps } from './index';
 import Layout from '../../components/layout';
 import Search from '../../components/search';
+import styles from './main.module.css';
 
-interface IProps {
-    events: IEvent[];
-    count: number;
-    fetchEvents(props: IFetchItemsRequest): void;
-}
+interface CardsListProps extends StateProps, DispatchProps {};
 
 const COUNT_CARD = 5;
 
-const CardsList: React.FC<IProps> = ({ events, count, fetchEvents }) => {
+
+const Main: React.FC<CardsListProps> = ({ events, count, fetchEvents, loadingEvent }) => {
     const [offset, setOffset] = useState(0);
-    const [height, setHeight] = useState(0);
 
     const loadMore = () => {
         fetchEvents({ limit: COUNT_CARD, offset });
         setOffset(offset + COUNT_CARD);
     };
 
-
     useEffect(() => {
         const handleScroll = () => {
             if (count > offset) {
-                if (window.innerHeight + document.documentElement.scrollTop > height - 300) {
-                    setHeight(document.documentElement.scrollHeight);
-                    loadMore();
+                if (window.innerHeight + document.documentElement.scrollTop > document.documentElement.scrollHeight - 200) {
+                    loadMore()
                 }
             }
-        };
+        }
+
         document.addEventListener('scroll', handleScroll);
 
         return () => {
             document.removeEventListener('scroll', handleScroll);
-
         }
-    }, []);
+    })
 
 
     useEffect(() => {
-        loadMore();
+        loadMore()
     }, []);
-
 
     return (
         <Layout>
             <Search findEventsList={() => {
-                console.log('search')
+                console.log('search');
             }}/>
             {events && events.map(event => (
                 <SmallCard
@@ -65,8 +56,9 @@ const CardsList: React.FC<IProps> = ({ events, count, fetchEvents }) => {
                     likesCount={event.likesCount}
                 />
             ))}
+            {loadingEvent ? <p className={styles.loading}>Loading ...</p> : null}
         </Layout>
     )
 };
 
-export default CardsList
+export default Main
