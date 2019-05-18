@@ -7,7 +7,7 @@ interface CardsListProps extends StateProps, DispatchProps {}
 const CardsList: React.FC<CardsListProps> = ({ events, fetchEvents }) => {
 
     useEffect(() => {
-        console.log('test')
+        console.log('test', fetchEvents)
         fetchEvents({ limit: 2, offset: 0 })
     }, []);
 

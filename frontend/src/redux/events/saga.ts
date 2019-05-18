@@ -8,6 +8,7 @@ import { fetchEvents } from './actions';
 
 function* fetchEventsSaga(action: ActionType<typeof fetchEvents.request>) {
     const url = events.list.build();
+    console.log(url)
     const props = {
         url,
         method: 'GET',
