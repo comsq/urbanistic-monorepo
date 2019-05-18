@@ -4,6 +4,8 @@
 
 .layoutWrapper {
     max-width: 400px;
+    min-width: 300px;
+    min-height: 550px;
     position: absolute;
     background-color: #fff;
     left: 50%;
