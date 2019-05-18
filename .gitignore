@@ -5,3 +5,4 @@
 
 /frontend/.idea/
 /node_modules/
+*.orig
