@@ -10,6 +10,11 @@ django = "*"
 psycopg2-binary = "*"
 djangorestframework = "*"
 whitenoise = "*"
+pillow = "*"
+djangorestframework-camel-case = "*"
+six = "*"
+django-storages = "*"
+boto3 = "*"
 
 [requires]
 python_version = "3.7"
