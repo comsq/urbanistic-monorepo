@@ -12,7 +12,8 @@ const testData = {
     }, {
         id: '2',
         name: 'Free',
-    }]
+    }],
+    countLikes: 54,
 }
 
 const CardsList = () => (
@@ -23,6 +24,7 @@ const CardsList = () => (
             image={testData.image}
             description={testData.description}
             filters={testData.filters}
+            countLikes={testData.countLikes}
         />
     </div>
 );
