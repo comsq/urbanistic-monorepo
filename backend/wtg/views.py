@@ -1,6 +1,10 @@
 import random
 
-from rest_framework import mixins, viewsets
+from rest_framework import (
+    generics,
+    mixins,
+    viewsets
+)
 
 from . import models, serializers
 
@@ -29,3 +33,8 @@ class EventViewSet(mixins.ListModelMixin,
             return random.choice(self.queryset)
 
         return super().get_object()
+
+
+class UserCreateAPIView(viewsets.ViewSet, generics.CreateAPIView):
+    queryset = models.User.objects.all()
+    serializer_class = serializers.UserSerializer
