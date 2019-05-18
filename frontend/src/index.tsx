@@ -11,20 +11,22 @@ import Card from './pages/Card'
 import CardsList from './pages/CardsList'
 import Main from './pages/Main'
 import NotFound from './pages/NotFound'
-
+import Layout from "./common-components/Layout";
 
 import reducer from './redux/reducers'
 
 ReactDOM.render(
     <Provider store={createStore(reducer)}>
         <BrowserRouter>
-            <Switch>
-                <Route path="/create/event" component={CreateEvent}/>
-                <Route path="/card" component={Card}/>
-                <Route path="/cards" component={CardsList}/>
-                <Route exact path="/" component={Main}/>
-                <Route component={NotFound}/>
-            </Switch>
+            <Layout>
+                <Switch>
+                    <Route path="/create/event" component={CreateEvent}/>
+                    <Route path="/card" component={Card}/>
+                    <Route path="/cards" component={CardsList}/>
+                    <Route exact path="/" component={Main}/>
+                    <Route component={NotFound}/>
+                </Switch>
+            </Layout>
         </BrowserRouter>
     </Provider>
     , document.getElementById('root'));
