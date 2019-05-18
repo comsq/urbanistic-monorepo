@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+
+class Tag(models.Model):
+    slug = models.fields.SlugField()
+    title = models.TextField(db_index=True)
+    description = models.TextField(db_index=True)
