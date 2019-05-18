@@ -7,10 +7,16 @@ export default class Header extends Component {
     render() {
         return (
             <header className={styles.header}>
-                <div className={styles.text}>Куда<br />пойдем?</div>
+                <div className={styles.text}>
+                    Куда<br />пойдем?
+                </div>
                 <div className={styles.rightBlock}>
-                    <div onClick={this.onFilterClick} className={styles.filterIcon}><FilterList fontSize="inherit" /></div>
-                    <div onClick={this.onProfileClick} className={styles.profileIcon}><AccountCircle fontSize="inherit" /></div>
+                    <div onClick={this.onFilterClick} className={styles.filter}>
+                        <FilterList fontSize="inherit" className={styles.filterIcon}/>
+                    </div>
+                    <div onClick={this.onProfileClick} className={styles.profile}>
+                        <AccountCircle fontSize="inherit" className={styles.profileIcon}/>
+                    </div>
                 </div>
             </header>
         );

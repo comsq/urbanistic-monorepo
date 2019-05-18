@@ -40,7 +40,7 @@ const SmallCard: React.FC<IEventSmall> = ({ title, date, image, description, tag
                 <div className={styles.smallCard_actionBlock}>
                     <div className={styles.smallCard_filters}>
                         {tags.map(tag => (
-                            <Link component="a" href={`/events/${tag.slug}`}>
+                            <Link component="a" href={`/events/${tag.slug}`} key={tag.slug}>
                                 <Typography component="p" className={styles.smallCard_filter}>
                                     {tag.title}
                                 </Typography>
@@ -48,11 +48,11 @@ const SmallCard: React.FC<IEventSmall> = ({ title, date, image, description, tag
                         ))}
                     </div>
                     <div className={styles.smallCard_likes}>
-                        {likesCount && <Typography component="p" className={styles.smallCard_count_likes}>
+                        {likesCount ? <Typography component="p" className={styles.smallCard_count_likes} color="secondary">
                             {likesCount}
-                        </Typography>}
-                        <IconButton aria-label="Add to favorites" onClick={() => console.log('like')}>
-                            <FavoriteIcon />
+                        </Typography> : null}
+                        <IconButton aria-label="Add to favorites" onClick={() => console.log('like')} color="secondary">
+                            <FavoriteIcon color="secondary"/>
                         </IconButton>
                     </div>
                 </div>

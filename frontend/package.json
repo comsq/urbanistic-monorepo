@@ -28,8 +28,7 @@
     "redux-saga": "1.0.2",
     "typesafe-actions": "4.3.0",
     "typescript": "3.4.5",
-    "date-fns": "latest",
-    "react-infinite-scroller": "latest"
+    "date-fns": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -45,5 +44,7 @@
     "not dead",
     "not op_mini all"
   ],
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/react-infinite-scroller": "1.2.1"
+  }
 }

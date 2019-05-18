@@ -30,7 +30,7 @@ export default function (state = initialState, action: EventsActions) {
             return {
                 ...state,
                 count,
-                items,
+                items: state.items.concat(items),
                 fetchStarted: false,
                 fetchError: null
             }
