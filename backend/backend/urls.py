@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.shortcuts import redirect
 from django.urls import path, include
 from rest_framework import routers
 
@@ -30,6 +31,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('auth/', include('rest_framework_social_oauth2.urls')),
     path('admin/', admin.site.urls),
+    path('accounts/profile/', redirect('https://w-t-g.herokuapp.com')),
 ]
 
 if not settings.IS_PRODUCTION:
