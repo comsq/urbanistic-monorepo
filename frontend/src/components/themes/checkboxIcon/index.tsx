@@ -21,7 +21,7 @@ export default class CheckboxIcon extends Component<Props> {
         const defaultColor = '#fff';
         const style = checked ? {backgroundColor: color, borderColor: color, color: defaultColor} : {color};
         return <div style={style} className={classNames}>
-            {icon}
+            <div className={styles.icon}>{icon}</div>
             <div className={styles.title}>{title}</div>
         </div>;
     }

@@ -17,4 +17,4 @@ const Layout: React.FC<Props> = ({ children, customHeader }) => (
     </div>
 );
 
-export default Layout
+export default Layout;

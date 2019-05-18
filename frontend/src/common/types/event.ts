@@ -1,3 +1,5 @@
+import { ITag } from './tag';
+
 export interface IEventParams {
     slug: string;
 }
@@ -11,7 +13,7 @@ export interface IEventBriefInfo {
 export interface IEvent extends IEventParams {
     description: string;
     title: string
-    tags: IEventBriefInfo[];
+    tags: ITag[];
     likesCount: number | null;
     date: number; // unix millis
     image: string;

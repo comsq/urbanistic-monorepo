@@ -1,5 +1,8 @@
 .theme {
-    padding: 26px 23px;
+    font-size: 40px;
+    height: 100px;
+    padding: 0 20px;
+    min-width: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,12 +10,11 @@
     border-width: 1px;
     border-style: solid;
     border-color: #c4c4c4;
-    box-shadow: 0 0 4px rgba(0, 0, 0, .25);
 }
 
 .icon {
-    width: 52px;
-    height: 52px;
+    margin-right: 20px;
+    height: 42px;
 }
 
 .title {

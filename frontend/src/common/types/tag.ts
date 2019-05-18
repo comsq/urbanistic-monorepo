@@ -1,4 +1,6 @@
 export interface ITag {
-    slug: string;
-    title: string;
+    description: string,
+    id: number,
+    slug: string,
+    title: string
 }
