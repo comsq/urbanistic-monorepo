@@ -3,21 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/jest": "24.0.13",
-    "@types/node": "12.0.2",
-    "@types/react": "16.8.17",
-    "@types/react-dom": "16.8.4",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-scripts": "3.0.1",
-    "typescript": "3.4.5",
-    "react-router-dom": "latest",
-    "react-redux": "latest",
-    "redux": "latest",
     "@material-ui/styles": "latest",
     "@material-ui/core": "latest",
     "@material-ui/icons": "latest",
-    "classnames": "latest"
+    "axios": "0.18.0",
+    "classnames": "latest",
+    "path-to-regexp": "3.0.0",
+    "query-string": "6.5.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "typescript": "3.4.5",
+    "react-redux": "latest",
+    "react-router-dom": "latest",
+    "react-scripts": "3.0.1",
+    "redux": "latest",
+    "redux-saga": "1.0.2",
+    "typesafe-actions": "4.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,7 +36,12 @@
   ],
   "devDependencies": {
     "@types/classnames": "2.2.7",
+    "@types/jest": "24.0.13",
+    "@types/node": "12.0.2",
+    "@types/react": "16.8.17",
+    "@types/react-dom": "16.8.4",
     "@types/react-redux": "7.0.9",
-    "@types/react-router-dom": "4.3.3"
+    "@types/react-router-dom": "4.3.3",
+    "typescript": "3.4.5"
   }
 }
