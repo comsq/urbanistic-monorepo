@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function Header() {
-    return <div>здарова</div>;
+    return <div>header</div>;
 }
