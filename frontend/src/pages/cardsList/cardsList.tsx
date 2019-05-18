@@ -1,5 +1,5 @@
 import React from 'react';
-import SmallCard from '../../common-components/Card/SmallCard';
+import SmallCard from '../../common-components/card/smallCard';
 
 const testData = {
     title: 'Shri mp and Chorizo Paella',

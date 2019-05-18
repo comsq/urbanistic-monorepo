@@ -2,13 +2,13 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 
-import Layout from './common-components/Layout';
+import Layout from './common-components/layout';
 
-import CreateEvent from './pages/CreateEvent';
-import Card from './pages/Card';
-import CardsList from './pages/CardsList';
-import Main from './pages/Main';
-import NotFound from './pages/NotFound';
+import CreateEvent from './pages/createEvent';
+import Card from './pages/card';
+import CardsList from './pages/cardsList';
+import Main from './pages/main';
+import NotFound from './pages/notFound';
 
 import {
     createEventUrl,
