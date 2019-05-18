@@ -11,7 +11,7 @@
     "react-dom": "16.8.6",
     "react-scripts": "3.0.1",
     "typescript": "3.4.5",
-    "react-router-dom": "latest",
+    "react-router-dom": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,10 +27,6 @@
       "not dead",
       "not op_mini all"
   ],
-  "devDependencies": {
-    "@types/react-redux": "7.0.9",
-    "@types/react-router-dom": "4.3.3"
-  },
   "devDependencies": {
     "@types/react-redux": "7.0.9",
     "@types/react-router-dom": "4.3.3"
