@@ -16,16 +16,20 @@ const testData = {
     countLikes: 54,
 }
 
+const events = [testData, testData, testData]
+
 const CardsList = () => (
     <div>
-        <SmallCard
-            title={testData.title}
-            date={testData.date}
-            image={testData.image}
-            description={testData.description}
-            filters={testData.filters}
-            countLikes={testData.countLikes}
-        />
+        {events.map(event => (
+            <SmallCard
+                title={event.title}
+                date={event.date}
+                image={event.image}
+                description={event.description}
+                filters={event.filters}
+                countLikes={event.countLikes}
+            />
+        ))}
     </div>
 );
 
