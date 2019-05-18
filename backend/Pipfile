@@ -15,6 +15,7 @@ djangorestframework-camel-case = "*"
 six = "*"
 django-storages = "*"
 boto3 = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.7"

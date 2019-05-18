@@ -46,3 +46,19 @@ class EventSerializer(serializers.ModelSerializer):
             'max_participants_count',
             'date',
         )
+
+
+class FeedEventSerializer(serializers.ModelSerializer):
+    tags = EventTagSerializer(many=True)
+
+    class Meta:
+        model = models.Event
+        fields = (
+            'slug',
+            'title',
+            'description',
+            'tags',
+            'image',
+            'likes_count',
+            'date',
+        )
