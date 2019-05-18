@@ -1,14 +1,19 @@
 .header {
-    margin: 23px 12px 0;
+    margin: 23px 20px 0;
     display: flex;
     justify-content: space-between;
 }
 
-.text {
+.text a {
     font-weight: bold;
     font-size: 23px;
     line-height: 27px;
     text-transform: uppercase;
+    text-decoration: none;
+    color: #000;
+}
+.text a:visited {
+    color: #000;
 }
 
 .rightBlock {
