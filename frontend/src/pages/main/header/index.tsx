@@ -9,9 +9,7 @@ export default class Header extends Component {
         return (
             <header className={styles.header}>
                 <div className={styles.text}>
-                    <Link to={'/'}>
-                        Куда<br />пойдем?
-                    </Link>
+                    Куда<br />пойдем?
                 </div>
                 <div className={styles.rightBlock}>
                     <Link to={'/filters'}>

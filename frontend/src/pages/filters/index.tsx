@@ -1,6 +1,8 @@
 import React from 'react'
 import Themes from '../../components/themes';
 import slugs from "../../constants/slugs";
+import Header from './header';
+
 const themes = [
     {title: 'спорт', slug: slugs.sport},
     {title: 'шоппинг', slug: slugs.shopping},
@@ -13,7 +15,7 @@ const themes = [
 
 export default function Filters() {
     return <div>
-        Фильтры
+        <Header />
         <Themes themes={themes}/>
     </div>
 }
