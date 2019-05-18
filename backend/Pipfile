@@ -16,6 +16,7 @@ six = "*"
 django-storages = "*"
 boto3 = "*"
 django-cors-headers = "*"
+django-filter = "*"
 
 [requires]
 python_version = "3.7"
