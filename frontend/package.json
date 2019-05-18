@@ -13,7 +13,6 @@
     "typescript": "3.4.5",
     "react-router-dom": "latest",
     "react-redux": "latest",
-    "redux": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,18 +22,6 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "devDependencies": {
     "@types/react-redux": "7.0.9",
