@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 
-import Layout from './common-components/layout';
+import Layout from './components/layout';
 
 import CreateEvent from './pages/createEvent';
 import Card from './pages/card';
