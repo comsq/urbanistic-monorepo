@@ -1,0 +1,4 @@
+.smallCard_actionBlock {
+    display: flex;
+    justify-content: space-between;
+}
