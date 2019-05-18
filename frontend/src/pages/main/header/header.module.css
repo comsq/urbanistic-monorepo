@@ -1,5 +1,4 @@
 .header {
-    margin: 23px 12px 0;
     display: flex;
     justify-content: space-between;
 }
@@ -9,6 +8,8 @@
     font-size: 23px;
     line-height: 27px;
     text-transform: uppercase;
+    text-decoration: none;
+    color: #000;
 }
 
 .rightBlock {
