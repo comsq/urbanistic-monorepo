@@ -26,6 +26,7 @@ export default function (state = initialState, action: EventsActions) {
         }
         case getType(fetchEvents.success): {
             const { count, items } = action.payload;
+            console.log(items)
 
             return {
                 ...state,

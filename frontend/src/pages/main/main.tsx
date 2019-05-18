@@ -13,21 +13,22 @@ const CardsList: React.FC<CardsListProps> = ({ events, count, fetchEvents }) => 
     const [height, setHeight] = useState(0);
 
     const loadMore = () => {
-        fetchEvents({limit: COUNT_CARD, offset});
+        fetchEvents({ limit: COUNT_CARD, offset });
         setOffset(offset + COUNT_CARD);
     };
 
-    const handleScroll = () => {
-        if (count > offset) {
-            if (window.innerHeight + document.documentElement.scrollTop > height - 300) {
-                setHeight(document.documentElement.scrollHeight)
-                loadMore()
-            }
-        }
-    }
 
     useEffect(() => {
-        loadMore()
+        const handleScroll = () => {
+            console.log(count, offset)
+            if (count > offset) {
+                console.log('scroll')
+                if (window.innerHeight + document.documentElement.scrollTop > height - 300) {
+                    setHeight(document.documentElement.scrollHeight)
+                    loadMore();
+                }
+            }
+        }
         document.addEventListener('scroll', handleScroll);
 
         return () => {
@@ -35,6 +36,12 @@ const CardsList: React.FC<CardsListProps> = ({ events, count, fetchEvents }) => 
 
         }
     }, [])
+
+
+    useEffect(() => {
+        loadMore();
+    }, [])
+
 
     return (
         <Layout>
