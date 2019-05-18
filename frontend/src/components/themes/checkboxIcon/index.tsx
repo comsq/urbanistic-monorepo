@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styles from './checkboxIcon.module.css';
-import slugToIcon from '../../../helpers/slugToIcon';
-import slugToColorIcon from '../../../helpers/slugToColorIcon';
+import slugToIcon from '../../../utils/slugToIcon';
+import slugToColorIcon from '../../../utils/slugToColorIcon';
 import classnames from 'classnames';
 
 type Props = {
