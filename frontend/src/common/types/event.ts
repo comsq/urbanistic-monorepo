@@ -8,12 +8,17 @@ export interface IEventBriefInfo {
     image: string;
 }
 
-export interface IEvent extends IEventParams{
+export interface IEventSmall extends IEventParams{
     description: string;
-    tags: string[];
+    title: string
+    tags: IEventBriefInfo[];
     likesCount: number | null;
+    date: number; // unix millis
+    image: string;
+}
+
+export interface IEvent extends IEventParams, IEventSmall {
     participantsCount: number | null;
     maxParticipants: number | null;
-    date: number; // unix millis
     similarWith: IEventBriefInfo[];
 }

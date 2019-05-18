@@ -4,6 +4,6 @@ import eventsSaga from './events/saga';
 
 export default function* rootSaga() {
     yield all([
-        eventsSaga
+        eventsSaga()
     ]);
 }
