@@ -40,11 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_filters',
     'rest_framework',
     'rest_framework.authtoken',
-
     'corsheaders',
     'storages',
+    'oauth2_provider',
+    'social_django',
+    'rest_framework_social_oauth2',
 
     'wtg',
 ]
@@ -85,9 +88,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False
 CORS_URLS_REGEX = '.+'
-CORS_ORIGIN_REGEX_WHITELIST = [
-    r'.+',
-]
+CORS_ORIGIN_REGEX_WHITELIST = [r'.+']
 
 
 # Database
@@ -176,6 +177,15 @@ else:
 # Rest framework
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'rest_framework_social_oauth2.authentication.SocialAuthentication',
+    ),
+
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+
     'DEFAULT_RENDERER_CLASSES': (
         'djangorestframework_camel_case.render.CamelCaseJSONRenderer',
     ),
@@ -183,4 +193,37 @@ REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': (
         'djangorestframework_camel_case.parser.CamelCaseJSONParser',
     ),
+
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
 }
+
+AUTHENTICATION_BACKENDS = (
+    # Facebook OAuth2
+    'social_core.backends.facebook.FacebookAppOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    # VK OAuth2
+    'social_core.backends.vk.VKAppOAuth2',
+    'social_core.backends.vk.VKOAuth2',
+
+    # GitHub
+    'social_core.backends.github.GithubOAuth2',
+
+    # django-rest-framework-social-oauth2
+    'rest_framework_social_oauth2.backends.DjangoOAuth2',
+
+    # Django
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# Facebook configuration
+SOCIAL_AUTH_FACEBOOK_KEY = '<your app id goes here>'
+SOCIAL_AUTH_FACEBOOK_SECRET = '<your app secret goes here>'
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id, name, email'
+}
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '6988779'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = os.environ.get('VK_OAUTH2_SECRET')
