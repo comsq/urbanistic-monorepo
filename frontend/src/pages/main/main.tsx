@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import SmallCard from '../../components/card/smallCard';
+import { useQueryParam, StringParam } from 'use-query-params';
 import { DispatchProps, StateProps } from './index';
 import Layout from '../../components/layout';
 import Search from '../../components/search';
@@ -12,38 +13,49 @@ const COUNT_CARD = 5;
 
 const Main: React.FC<CardsListProps> = ({ events, count, fetchEvents, loadingEvent }) => {
     const [offset, setOffset] = useState(0);
+    const [search, setSearch] = useQueryParam('search', StringParam);
 
-    const loadMore = () => {
-        fetchEvents({ limit: COUNT_CARD, offset });
+    const loadMore = useCallback(() => {
+        fetchEvents({ limit: COUNT_CARD, offset, search: search || '' });
         setOffset(offset + COUNT_CARD);
-    };
+    }, [search]);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (count > offset) {
-                if (window.innerHeight + document.documentElement.scrollTop > document.documentElement.scrollHeight - 200) {
-                    loadMore()
-                }
+    const loadAgain = useCallback(() => {
+        fetchEvents({ limit: COUNT_CARD, offset: 0, search: search || '', reset: true });
+        setOffset(offset + COUNT_CARD);
+    }, [search]);
+
+    const setQuery = useCallback((text: string) => {
+        setSearch(text);
+        loadAgain();
+    }, [loadAgain]);
+
+    const handleScroll = useCallback(() => {
+        if (count > offset) {
+            if (window.innerHeight + document.documentElement.scrollTop > document.documentElement.scrollHeight - 200) {
+                loadMore()
             }
         }
+    }, [loadMore])
+
+    useEffect(() => {
+        handleScroll()
 
         document.addEventListener('scroll', handleScroll);
 
         return () => {
             document.removeEventListener('scroll', handleScroll);
         }
-    })
+    }, [handleScroll])
 
 
     useEffect(() => {
-        loadMore()
-    }, []);
+        loadAgain()
+    }, [loadAgain]);
 
     return (
         <Layout>
-            <Search findEventsList={() => {
-                console.log('search');
-            }}/>
+            <Search value={search || ''} setQuery={setQuery}/>
             {events && events.map(event => (
                 <SmallCard
                     key={event.slug}

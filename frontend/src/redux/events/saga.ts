@@ -25,9 +25,11 @@ function* fetchEventSaga(action: ActionType<typeof fetchEvent.request>) {
 }
 
 function* fetchEventsSaga(action: ActionType<typeof fetchEvents.request>) {
+    const { limit, offset, search, reset } = action.payload;
+
     const url = events.list.build();
     const props = {
-        url: `${url}?limit=${action.payload.limit}&offset=${action.payload.offset}`,
+        url: `${url}?limit=${limit}&offset=${offset}&search=${search}`,
         method: 'GET',
         data: action.payload
     };
@@ -35,7 +37,7 @@ function* fetchEventsSaga(action: ActionType<typeof fetchEvents.request>) {
     try {
         const { data } = yield call(fetch, props);
 
-        yield put(fetchEvents.success({ count: data.count , items: data.results }));
+        yield put(fetchEvents.success({ count: data.count , items: data.results, reset }));
     } catch (error) {
         yield put(fetchEvents.failure(error));
     }

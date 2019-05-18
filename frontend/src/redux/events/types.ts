@@ -10,10 +10,12 @@ export interface IFetchItemsRequest {
     sortBy?: string;
     sortDirection?: SortDirection;
     tag?: string;
+    reset?: boolean;
 }
 
 export interface IFetchItemsResponse {
     count: number;
+    reset?: boolean;
     items: IEvent[];
 }
 
