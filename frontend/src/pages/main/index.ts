@@ -21,7 +21,4 @@ const mapStateToProps = ({ events, tags }: SubStore) => ({
     selectedTags: Array.from(tags.selectedSlugs).map(slug => tags.items.find((tag: ITag)=> tag.slug === slug))
 })
 
-export type StateProps = ReturnType<typeof mapStateToProps>
-export type DispatchProps = ResolveThunks<typeof mapDispatchToProps>
-
 export default connect(mapStateToProps, mapDispatchToProps)(Main)
