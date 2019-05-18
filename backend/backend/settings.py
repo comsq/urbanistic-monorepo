@@ -137,18 +137,20 @@ if IS_PRODUCTION:
     AWS_STORAGE_BUCKET_NAME = 'wtg'
 
     AWS_DEFAULT_ACL = 'public-read'
-    AWS_S3_CUSTOM_DOMAIN = 'storage.yandexcloud.net'
+    AWS_S3_REGION_NAME = 'us-east-1'
+    AWS_S3_HOST = 'storage.yandexcloud.net'
+    AWS_S3_ENDPOINT_URL = f'https://{AWS_S3_HOST}'
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 
     # s3 static settings
     STATIC_LOCATION = 'static'
-    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
-    STATICFILES_STORAGE = 'wtg.storage.StaticStorage'
+    STATIC_URL = f'https://{AWS_S3_HOST}/{STATIC_LOCATION}/'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
     # s3 public media settings
     PUBLIC_MEDIA_LOCATION = 'media'
-    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
-    DEFAULT_FILE_STORAGE = 'wtg.storage.PublicMediaStorage'
+    MEDIA_URL = f'https://{AWS_S3_HOST}/{PUBLIC_MEDIA_LOCATION}/'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 else:
     STATIC_URL = '/static/'
