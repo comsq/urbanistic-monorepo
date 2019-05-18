@@ -1,14 +1,21 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { IEvent } from '../../common/types/event';
+import { IFetchItemsRequest } from '../../redux/events/types';
+
 import SmallCard from '../../components/card/smallCard';
-import { DispatchProps, StateProps } from './index';
-import Layout from "../../components/layout";
+import Layout from '../../components/layout';
 import Search from '../../components/search';
 
-interface CardsListProps extends StateProps, DispatchProps {};
+interface IProps {
+    events: IEvent[];
+    count: number;
+    fetchEvents(props: IFetchItemsRequest): void;
+}
 
 const COUNT_CARD = 5;
 
-const CardsList: React.FC<CardsListProps> = ({ events, count, fetchEvents }) => {
+const CardsList: React.FC<IProps> = ({ events, count, fetchEvents }) => {
     const [offset, setOffset] = useState(0);
     const [height, setHeight] = useState(0);
 
@@ -20,27 +27,25 @@ const CardsList: React.FC<CardsListProps> = ({ events, count, fetchEvents }) => 
 
     useEffect(() => {
         const handleScroll = () => {
-            console.log(count, offset)
             if (count > offset) {
-                console.log('scroll')
                 if (window.innerHeight + document.documentElement.scrollTop > height - 300) {
-                    setHeight(document.documentElement.scrollHeight)
+                    setHeight(document.documentElement.scrollHeight);
                     loadMore();
                 }
             }
-        }
+        };
         document.addEventListener('scroll', handleScroll);
 
         return () => {
             document.removeEventListener('scroll', handleScroll);
 
         }
-    }, [])
+    }, []);
 
 
     useEffect(() => {
         loadMore();
-    }, [])
+    }, []);
 
 
     return (

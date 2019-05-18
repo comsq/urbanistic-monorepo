@@ -4,14 +4,32 @@ import { ActionType } from 'typesafe-actions';
 import { events } from '../../urls/backend';
 import fetch from '../../common/fetch';
 
-import { fetchEvents } from './actions';
+import { fetchEvent, fetchEvents } from './actions';
+
+function* fetchEventSaga(action: ActionType<typeof fetchEvent.request>) {
+    const { slug } = action.payload;
+    const url = events.item.build({ slug });
+    const props = {
+        url,
+        method: 'GET',
+        data: action.payload
+    };
+
+    try {
+        const { data } = yield call(fetch, props);
+
+        yield put(fetchEvent.success(data));
+    } catch (error) {
+        yield put(fetchEvents.failure(error));
+    }
+}
 
 function* fetchEventsSaga(action: ActionType<typeof fetchEvents.request>) {
     const url = events.list.build();
     const props = {
         url: `${url}?limit=${action.payload.limit}&offset=${action.payload.offset}`,
         method: 'GET',
-        data: action.payload,
+        data: action.payload
     };
 
     try {
@@ -25,6 +43,7 @@ function* fetchEventsSaga(action: ActionType<typeof fetchEvents.request>) {
 
 export default function*() {
     yield all([
-        takeLatest(fetchEvents.request, fetchEventsSaga)
+        takeLatest(fetchEvents.request, fetchEventsSaga),
+        takeLatest(fetchEvent.request, fetchEventSaga)
     ]);
 }

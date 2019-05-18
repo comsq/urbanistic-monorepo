@@ -1,0 +1,10 @@
+.likes
+{
+    display: flex;
+    align-items: center;
+}
+
+.likes__count
+{
+    padding-right: 10px;
+}
