@@ -5,6 +5,7 @@ class Tag(models.Model):
     slug = models.fields.SlugField()
     title = models.TextField(db_index=True)
     description = models.TextField(db_index=True)
+    icon = models.ImageField()
 
     def __str__(self):
         return f'Tag {self.slug}'
