@@ -13,7 +13,7 @@ export default function (state = initialState, action: TagsActions | {type: stri
         case getType(fetchTags.success): {
             return {
                 ...state,
-                items: [...state.items, ...action.payload.items]
+                items: action.payload.items
             }
         }
         case 'tags/SELECT_TAGS': {
