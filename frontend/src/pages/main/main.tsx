@@ -13,11 +13,9 @@ import Search from '../../components/search';
 import Loading from '../../components/loading';
 import slugToIcon from '../../utils/slugToIcon';
 import slugToColorIcon from '../../utils/slugToColorIcon';
-import {Link} from "react-router-dom";
-import {tagsUrl} from "../../urls/client";
-import FilterList from "@material-ui/core/SvgIcon/SvgIcon";
 import LogoWithOutWord from '../../components/layout/header/LogoWithoutWords';
 import GenerateCard from '../../components/card/generateCard';
+import {IAuthRequest, IAuthStorage} from "../../redux/session/types";
 
 const CommaArrayParam = {
     encode: (array: string[] | null | undefined) =>
@@ -28,12 +26,14 @@ const CommaArrayParam = {
 };
 
 interface IProps {
+    session: IAuthStorage,
     count: number;
     events: IEvent[];
     loadingEvent: boolean;
     fetchEvents(payload: IFetchItemsRequest): void;
     fetchTags(payload: {}): void;
     selectedTags: ITag[];
+    authorize(payload: IAuthRequest): void;
 }
 
 const COUNT_CARD = 5;
@@ -47,6 +47,8 @@ const Main: React.FC<IProps> = ({
     fetchEvents,
     fetchTags,
     selectedTags,
+    authorize,
+    session
 }) => {
     a++;
 
@@ -57,6 +59,14 @@ const Main: React.FC<IProps> = ({
     const [offset, setOffset] = useState(0);
     const [search, setSearch] = useQueryParam('search', StringParam);
     const [tags, setTags] = useQueryParam('tags', CommaArrayParam);
+    const [code] = useQueryParam('code', StringParam);
+    let [state] = useQueryParam('state', StringParam);
+
+    if (code && !session.fetchEventStarted && !session.token && !session.fetchEventError) {
+        state = state || 'vk-oauth2';
+
+        authorize({ code, provider: state as any });
+    }
 
     const loadMore = useCallback(() => {
         fetchEvents({

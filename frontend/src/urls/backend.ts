@@ -10,3 +10,5 @@ export const events = {
 export const tags = {
     list: new Url('/tags')
 };
+
+export const authorizeUrl = new Url('/login/social/token_user/');
