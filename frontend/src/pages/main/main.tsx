@@ -14,6 +14,7 @@ import Loading from '../../components/loading';
 import slugToIcon from '../../utils/slugToIcon';
 import slugToColorIcon from '../../utils/slugToColorIcon';
 import LogoWithOutWord from '../../components/layout/header/LogoWithoutWords';
+import GenerateCard from '../../components/card/generateCard';
 
 const CommaArrayParam = {
     encode: (array: string[] | null | undefined) =>
@@ -104,6 +105,7 @@ const Main: React.FC<IProps> = ({
     return (
         <Layout>
             <Search value={search || ''} setQuery={setQuery}/>
+            <GenerateCard />
             {selectedTags.length ? <div className={styles.filters}>
                 <div className={styles.chooseFilter}>Выбранные фильтры:</div>
                 {selectedTags.map((selectedTag: any) => {
