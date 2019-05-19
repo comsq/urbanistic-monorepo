@@ -37,7 +37,7 @@ const Main: React.FC<IProps> = ({
             search: search || ''
         });
         setOffset(offset + COUNT_CARD);
-    }, [search]);
+    }, [search, fetchEvents, offset]);
 
     const loadAgain = useCallback(() => {
         fetchEvents({
@@ -46,26 +46,24 @@ const Main: React.FC<IProps> = ({
             search: search || '',
             reset: true
         });
-        setOffset(offset + COUNT_CARD);
-    }, [search]);
+        setOffset(COUNT_CARD);
+    }, [search, fetchEvents]);
 
     const setQuery = useCallback((text: string) => {
         setSearch(text);
         loadAgain();
-    }, [loadAgain]);
+    }, [loadAgain, setSearch]);
 
     const handleScroll = useCallback(() => {
         const heightOffset = window.innerHeight + document.documentElement.scrollTop;
         const scrollOffset = document.documentElement.scrollHeight - 200;
 
-        if (count > offset && heightOffset > scrollOffset) {
+        if (count > offset && heightOffset > scrollOffset && !loadingEvents) {
             loadMore();
         }
-    }, [loadMore]);
+    }, [count, offset, loadingEvents]);
 
     useEffect(() => {
-        handleScroll();
-
         document.addEventListener('scroll', handleScroll);
 
         return () => {
@@ -74,8 +72,8 @@ const Main: React.FC<IProps> = ({
     }, [handleScroll]);
 
     useEffect(() => {
-        loadAgain()
-    }, [loadAgain]);
+        loadAgain();
+    },[loadAgain]);
 
     return (
         <Layout>
