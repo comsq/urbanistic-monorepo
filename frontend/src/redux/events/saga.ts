@@ -37,7 +37,7 @@ function* fetchEventsSaga(action: ActionType<typeof fetchEvents.request>) {
     try {
         const { data } = yield call(fetch, props);
 
-        yield put(fetchEvents.success({ count: data.count , items: data.results, reset }));
+        yield put(fetchEvents.success({ count: data.count, items: data.results, reset }));
     } catch (error) {
         yield put(fetchEvents.failure(error));
     }

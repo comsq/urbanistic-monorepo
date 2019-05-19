@@ -18,7 +18,7 @@ export default function CustomizedInputBase({ value, setQuery }: IProps) {
 
     const onChange = useCallback(event => {
         setValue(event.target.value);
-    }, []);
+    }, [setValue]);
 
     return (
         <Paper className={styles.search} elevation={1} square={true} >
