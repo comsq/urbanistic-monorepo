@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import { RouteComponentProps } from 'react-router';
 
 import { IApiError } from '../../common/types/error';
@@ -34,9 +35,17 @@ const Event = (props: IProps) => {
     }
 
     const color = slugToColorIcon(event.slug);
+    const title = `Куда пойдём? - ${event.title}`;
 
     return (
         <>
+            <Helmet>
+                <title>{title}</title>
+                <meta name="og:title" content={title} />
+                <meta name="description" content={event.description} />
+                <meta name="og:description" content={event.description} />
+                <meta name="og:image" content={event.image} />
+            </Helmet>
             <img
                 className={styles.event__image}
                 src={event.image}

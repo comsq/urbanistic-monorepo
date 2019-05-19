@@ -17,7 +17,7 @@ const themes = [
 
 export default function Filters() {
     return (
-        <Layout >
+        <Layout>
             <Themes themes={themes}/>
         </Layout>
     );
