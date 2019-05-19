@@ -83,7 +83,7 @@ const Main: React.FC<IProps> = ({
             offset: 0,
             search: search || '',
             reset: true,
-            tags: selectedTags.map((tag: any) => tag.slug),
+            tags: selectedTags.map((tag: ITag) => tag.slug),
         });
         setOffset(COUNT_CARD);
     }, [search, fetchEvents]);

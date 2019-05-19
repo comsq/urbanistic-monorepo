@@ -23,6 +23,10 @@ export interface IFetchEventRequest {
     slug: string;
 }
 
+export interface IParticipationRequest {
+    slug: string;
+}
+
 export interface IEventsStore {
     count: number;
     eventsMap: IDictionary<IEvent>;
@@ -33,6 +37,8 @@ export interface IEventsStore {
     fetchEventError: IApiError | null;
     limit: number;
     offset: number;
+    participationRequested: boolean;
+    participationError: IApiError | null;
     search?: string;
     sortBy?: string;
     sortDirection?: SortDirection;

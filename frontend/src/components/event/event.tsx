@@ -7,8 +7,8 @@ import { IEvent } from '../../common/types/event';
 import { ITag } from '../../common/types/tag';
 import slugToColorIcon from '../../utils/slugToColorIcon';
 
-import ActionButton from '../action-button';
 import BackArrow from '../back-arrow';
+import GoButton from '../go-button';
 import Likes from '../likes';
 import Loading from '../loading';
 import SimilarEvents from './similarEvents';
@@ -20,11 +20,10 @@ interface IProps {
     history: RouteComponentProps['history'];
     fetchEventStarted: boolean;
     fetchEventError: IApiError | null;
-    onSubscribe?(): void;
 }
 
 const Event = (props: IProps) => {
-    const { event, history, fetchEventStarted, fetchEventError, onSubscribe } = props;
+    const { event, history, fetchEventStarted, fetchEventError } = props;
 
     if (fetchEventStarted) {
         return <Loading />;
@@ -67,11 +66,19 @@ const Event = (props: IProps) => {
                 {event.description}
             </p>
             <div className={styles.event__controls}>
-                <ActionButton onClick={onSubscribe}>
-                    Я иду!
-                </ActionButton>
+                <GoButton slug={event.slug} />
                 <Likes likesCount={event.likesCount} />
             </div>
+            {event.participantsCount ? (
+                <p className={styles.event__participants}>
+                    Идут на мероприятие: {event.participantsCount}
+                </p>
+            ) : null}
+            {event.maxParticipantsCount ? (
+                <p className={styles.event__participants}>
+                    Максимальное число участников: {event.maxParticipantsCount}
+                </p>
+            ) : null}
             <SimilarEvents similarWith={event.similarWith} />
             <BackArrow history={history} />
         </>

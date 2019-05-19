@@ -1,0 +1,14 @@
+button.active
+{
+    border: 1px solid #1B16EA;
+
+    color: #1B16EA;
+
+    background-image: none;
+    background-color: #fff;
+}
+
+.loading > div
+{
+    padding: 0;
+}
