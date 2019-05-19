@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Shake from 'shake.js';
 import CanvasLayout from './canvasLayout';
 
+import styles from './random.module.css';
+
 
 interface IProps {
 }
@@ -47,12 +49,35 @@ export default class Random extends Component<IProps, IState> {
         }
     }
 
+    componentDidMount(): void {
+        this.getRandom()
+            .then(data => data.json())
+            .then(console.log)
+            // .then(data => {
+            //     setTimeout()
+            // })
+    }
+
+    getRandom = () => {
+        return fetch('http://w-t-g-b.herokuapp.com/events/random/', {
+            method: 'GET'
+        });
+    };
+
     shakeEventDidOccur = () => {
         this.setState({randomVariant: Math.floor(Math.random() * 101).toString()});
     };
 
     render() {
-        return <CanvasLayout />;
+        return (
+            <div className={styles.random_wrapper}>
+                <CanvasLayout isUpper={true}/>
+                <div className={styles.center}>
+                    <div>Потряси телефон!</div>
+                </div>
+                <CanvasLayout isUpper={false}/>
+            </div>
+        );
         if (!this.state.canListen) {
             return (
                 <div>

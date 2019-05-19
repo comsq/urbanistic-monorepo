@@ -1,16 +1,15 @@
 import React, {Component} from 'react'
 
-const W = window.innerWidth / 2;
-const H = window.innerHeight;
+const W = document.body.clientWidth / 2;
+const H = window.innerHeight / 2 - 100;
 const mainWord = "кудасходить";
 const letterInX = 18;
 const letterInY = 20;
-const shiftOnX = Math.floor(W / 2 + (W / 2 - letterInX * mainWord.length) / (mainWord.length + 1));
+const shiftOnX = Math.floor((W - letterInX * mainWord.length) / (mainWord.length + 1));
+const shiftOnY = shiftOnX;
 const betweenLetter = shiftOnX;
 const letterColor = '#162fe1';
 const fontSizeLetter = 32;
-const fontSizeText= 48;
-const phrase = 'Потряси телефон';
 
 function randomInt(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -41,26 +40,16 @@ function createFlyingLetter(x: number, y: number, letter: string): ILetter {
 
 function createLetters(canvas: any) {
     const letters = [];
-    for (let x = 0, indexLetter = 0;
+    for (let x = shiftOnX, indexLetter = 0;
          indexLetter < mainWord.length;
          x += letterInX + betweenLetter, indexLetter++) {
-        for (let y = (betweenLetter / 2**0.5 - letterInY / 2) * (indexLetter % 2);
+        for (let y = shiftOnY + (betweenLetter / 2**0.5 - letterInY / 2) * (indexLetter % 2);
              y < canvas.height - letterInY;
              y += letterInY + betweenLetter) {
             letters.push(createFlyingLetter(x, y, mainWord[indexLetter]));
         }
     }
     return letters;
-}
-
-function insertText(ctx: any) {
-    ctx.beginPath();
-    ctx.font = fontSizeText + "px Roboto";
-    ctx.transition = "all 2s ease";
-    ctx.fillStyle = letterColor;
-    ctx.fillText(phrase, W / 2 - 352 /2, H / 2);
-    ctx.fill();
-    ctx.stroke();
 }
 
 function redrawLetters(ctx: any, letters: ILetter[], alpha: number) {
@@ -83,24 +72,31 @@ function redrawLetters(ctx: any, letters: ILetter[], alpha: number) {
     });
 }
 
-function moveLetters(ctx: any, letters: any, stepInMs=10, timeout=3330, duration=1000, alpha=1) {
+function moveLetters(ctx: any, letters: any, stepInMs=10, timeout=3000, duration=1000, alpha=1) {
     const cb = () => {
         redrawLetters(ctx, letters, alpha);
         timeout -= stepInMs;
-        alpha -= 1 / 333;
+        alpha -= 1 / 300;
         if (timeout > 0) {
             setTimeout(cb, stepInMs);
         }
     };
     redrawLetters(ctx, letters, alpha);
-    insertText(ctx);
-    // setTimeout(cb, duration);
+    setTimeout(cb, duration);
 }
 
-function initialization(canvas: any) {
-    const ctx = canvas.getContext("2d");
+function initialization(canvas: any, isUpper: boolean) {
+    canvas.style.position = 'relative';
+    canvas.style.left = '50%';
+    canvas.style.transform = 'translateX(-50%)';
     canvas.width = W;
     canvas.height = H;
+    if (!isUpper) {
+        canvas.style.top = '50%';
+    } else {
+        canvas.style.display = 'block';
+    }
+    const ctx = canvas.getContext("2d");
     const letters = createLetters(canvas);
     moveLetters(ctx, letters);
 
@@ -111,6 +107,7 @@ interface IState {
 }
 
 interface IProps {
+    isUpper: boolean
 }
 
 export default class CanvasLayout extends Component<IProps, IState> {
@@ -123,7 +120,7 @@ export default class CanvasLayout extends Component<IProps, IState> {
     }
 
     componentDidMount(): void {
-        initialization(this.myRef.current);
+        initialization(this.myRef.current, this.props.isUpper);
     }
 
     render() {

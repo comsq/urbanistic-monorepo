@@ -1,0 +1,17 @@
+.random_wrapper {
+    position: relative;
+}
+
+.center {
+    width: 50%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 200px;
+    background: #fff;
+    color: #162fe1;
+    font: 36px Roboto sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
