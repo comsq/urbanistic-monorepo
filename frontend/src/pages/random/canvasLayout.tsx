@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import styles from './random.module.css';
 
 const W = document.body.clientWidth / 2;
 const H = (window.innerHeight - 89 - 60) / 2 - 100;
@@ -85,9 +86,6 @@ function moveLetters(ctx: any, letters: any, stepInMs=10, timeout=3000, duration
 }
 
 function initialization(canvas: any, isUpper: boolean) {
-    canvas.style.position = 'relative';
-    canvas.style.left = '50%';
-    canvas.style.transform = 'translateX(-50%)';
     canvas.width = W;
     canvas.height = H;
     if (!isUpper) {
@@ -133,6 +131,6 @@ export default class CanvasLayout extends Component<IProps, IState> {
     }
 
     render() {
-        return <canvas ref={this.myRef} />
+        return <canvas ref={this.myRef} className={styles.canvas} />
     }
 }
