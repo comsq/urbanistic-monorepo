@@ -7,6 +7,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { format } from 'date-fns';
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom'
 
 import { IEvent } from '../../../common/types/event';
 import {eventUrl, indexUrl} from '../../../urls/client';
@@ -61,16 +62,15 @@ const SmallCard: React.FC<Props> = ({
                 <div className={styles.smallCard_actionBlock}>
                     <div className={styles.smallCard_filters}>
                         {tags.map(tag => (
-                            <Link
-                                component="a"
-                                href={indexUrl.template}
+                            <RouterLink
+                                to={indexUrl.template}
                                 key={tag.slug}
                                 className={styles.smallCard_filter}
-                                onClick={() => selectTags({ tag: tag.slug, checked: true })}>
+                                onClick={() => { console.log(tag.slug); selectTags({ slug: tag.slug, checked: true }) }}>
                                 <Typography component="p">
                                     {tag.title}
                                 </Typography>
-                            </Link>
+                            </RouterLink>
                         ))}
                     </div>
                     <Likes likesCount={likesCount} />

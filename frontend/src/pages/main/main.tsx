@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useQueryParam, StringParam } from 'use-query-params';
+import { useQueryParam, StringParam, encodeDelimitedArray, decodeDelimitedArray } from 'use-query-params';
+
 import styles from './main.module.css';
 
 import { IEvent } from '../../common/types/event';
@@ -12,6 +13,14 @@ import Search from '../../components/search';
 import Loading from '../../components/loading';
 import slugToIcon from '../../utils/slugToIcon';
 import slugToColorIcon from '../../utils/slugToColorIcon';
+
+const CommaArrayParam = {
+    encode: (array: string[] | null | undefined) =>
+        encodeDelimitedArray(array, ','),
+
+    decode: (arrayStr: string | string[] | null | undefined) =>
+        decodeDelimitedArray(arrayStr, ',')
+};
 
 interface IProps {
     count: number;
@@ -32,6 +41,7 @@ const Main: React.FC<IProps> = ({
 }) => {
     const [offset, setOffset] = useState(0);
     const [search, setSearch] = useQueryParam('search', StringParam);
+    const [tags, setTags] = useQueryParam('tags', CommaArrayParam);
 
     const loadMore = useCallback(() => {
         fetchEvents({
@@ -48,10 +58,15 @@ const Main: React.FC<IProps> = ({
             offset: 0,
             search: search || '',
             reset: true,
-            tags: selectedTags.map(tag => tag.slug),
+            tags: selectedTags.map((tag: any) => tag.slug),
         });
         setOffset(COUNT_CARD);
     }, [search, fetchEvents]);
+
+    if (selectedTags.some((tag: ITag) => !(tags || []).includes(tag.slug))) {
+        setTags(Array.from(new Set((tags||[]).concat(selectedTags.map((tag: ITag) => tag.slug)))));
+        loadAgain();
+    }
 
     const setQuery = useCallback((text: string) => {
         setSearch(text);
@@ -84,7 +99,7 @@ const Main: React.FC<IProps> = ({
             <Search value={search || ''} setQuery={setQuery}/>
             {selectedTags.length ? <div className={styles.filters}>
                 <div className={styles.chooseFilter}>Выбранные фильтры:</div>
-                {selectedTags.map(selectedTag => {
+                {selectedTags.map((selectedTag: any) => {
                     if (!selectedTag) {
                         return null;
                     }

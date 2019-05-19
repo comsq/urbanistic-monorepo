@@ -8,6 +8,7 @@ export const fetchTags = createAsyncAction(
     'tags/FETCH_FAILURE'
 )<any, any, any>();
 export function selectTags(payload: any) {
+    console.log('paylog', payload)
     return {type: 'tags/SELECT_TAGS', payload};
 }
 
