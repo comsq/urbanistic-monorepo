@@ -12,8 +12,12 @@ from rest_framework import (
     generics,
     mixins,
     pagination,
+    status,
     viewsets,
 )
+from rest_framework.decorators import api_view
+from rest_framework.generics import get_object_or_404
+from rest_framework.response import Response
 
 from . import models, serializers
 
@@ -85,3 +89,25 @@ class EventViewSet(mixins.ListModelMixin,
 class UserCreateAPIView(viewsets.ViewSet, generics.CreateAPIView):
     queryset = models.User.objects.all()
     serializer_class = serializers.UserSerializer
+
+
+@api_view(['POST'])
+def like_event(request, event_slug):
+    event = get_object_or_404(models.Event.objects.all(), slug=event_slug)
+
+    event.likes_count += 1
+
+    event.save()
+
+    return Response(status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+def dislike_event(request, event_slug):
+    event = get_object_or_404(models.Event.objects.all(), slug=event_slug)
+
+    event.likes_count = max(0, event.likes_count - 1)
+
+    event.save()
+
+    return Response(status=status.HTTP_200_OK)
