@@ -7,6 +7,8 @@ import CameraAlt from '@material-ui/icons/CameraAlt';
 import LocalFlorist from '@material-ui/icons/LocalFlorist';
 import LocalGroceryStore from '@material-ui/icons/LocalGroceryStore';
 import LocationCity from '@material-ui/icons/LocationCity';
+import Free from '@material-ui/icons/FilterVintage';
+import Entertainment from '@material-ui/icons/LocalBar'
 
 export default function slugToIcon(slug: string, color: 'inherit' = 'inherit', fontSize: 'inherit' = 'inherit') {
     switch (slug) {
@@ -27,6 +29,12 @@ export default function slugToIcon(slug: string, color: 'inherit' = 'inherit', f
         }
         case slugs.shopping: {
             return <LocalGroceryStore fontSize={fontSize} color={color}/>;
+        }
+        case slugs.free: {
+            return <Free fontSize={fontSize} color={color}/>;
+        }
+        case slugs.entertainment: {
+            return <Entertainment fontSize={fontSize} color={color}/>;
         }
         case slugs.volunteerism: {
             return <LocalFlorist fontSize={fontSize} color={color}/>;
