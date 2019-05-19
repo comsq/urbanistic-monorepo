@@ -24,7 +24,6 @@ from wtg import views
 router = routers.DefaultRouter()
 router.register(r'tags', views.TagViewSet)
 router.register(r'events', views.EventViewSet)
-router.register(r'register', views.UserCreateAPIView)
 
 urlpatterns = [
     path('', include(router.urls)),

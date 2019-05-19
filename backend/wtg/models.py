@@ -1,6 +1,3 @@
-from hashlib import sha512
-
-from django.contrib.postgres.fields import ArrayField
 from django.db import models
 
 
@@ -32,16 +29,3 @@ class Event(models.Model):
 
     def __str__(self):
         return f'Event {self.slug}'
-
-
-class User(models.Model):
-    username = models.TextField(unique=True)
-    email = models.EmailField(unique=True)
-    password = models.TextField()
-    tags = models.ManyToManyField(Tag, blank=True)
-
-    def set_password(self, passwd):
-        self.password = sha512(passwd.encode('utf8')).hexdigest()
-
-    def __str__(self):
-        return f'User "{self.username} <{self.email}>"'
