@@ -13,6 +13,7 @@ import Search from '../../components/search';
 import Loading from '../../components/loading';
 import slugToIcon from '../../utils/slugToIcon';
 import slugToColorIcon from '../../utils/slugToColorIcon';
+import LogoWithOutWord from '../../components/layout/header/LogoWithoutWords';
 
 const CommaArrayParam = {
     encode: (array: string[] | null | undefined) =>
@@ -117,7 +118,7 @@ const Main: React.FC<IProps> = ({
                     )
                 })}
             </div> : null}
-            {events && events.map(event => (
+            {events.length ? events.map(event => (
                 <SmallCard
                     key={event.slug}
                     slug={event.slug}
@@ -128,7 +129,12 @@ const Main: React.FC<IProps> = ({
                     tags={event.tags}
                     likesCount={event.likesCount}
                 />
-            ))}
+            )) :
+                <div className={styles.noEvents}>
+                    <p className={styles.noEventsText}>К сожалению, не найдено ни одной организации.</p>
+                    <LogoWithOutWord height="100%" width="100%"/>
+                </div>
+            }
             {loadingEvent ? <Loading /> : null}
         </Layout>
     )
