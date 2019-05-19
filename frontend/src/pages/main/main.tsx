@@ -35,6 +35,8 @@ interface IProps {
 
 const COUNT_CARD = 5;
 
+let a = 0;
+
 const Main: React.FC<IProps> = ({
     events,
     count,
@@ -43,6 +45,8 @@ const Main: React.FC<IProps> = ({
     fetchTags,
     selectedTags,
 }) => {
+    a++;
+
     useEffect(() => {
         fetchTags({})
     }, [fetchTags]);
@@ -131,12 +135,12 @@ const Main: React.FC<IProps> = ({
                     tags={event.tags}
                     likesCount={event.likesCount}
                 />
-            )) :
+            )) : !loadingEvent && a !== 1 ? (
                 <div className={styles.noEvents}>
-                    <p className={styles.noEventsText}>К сожалению, не найдено ни одной организации.</p>
+                    <p className={styles.noEventsText}>К сожалению, не найдено ни одного события.</p>
                     <LogoWithOutWord height="100%" width="100%"/>
                 </div>
-            }
+            ) : null}
             {loadingEvent ? <Loading /> : null}
         </Layout>
     )
