@@ -28,6 +28,8 @@ router.register(r'register', views.UserCreateAPIView)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('events/like/<event_slug>', views.like_event),
+    path('events/dislike/<event_slug>', views.dislike_event),
     path('login/', include('rest_social_auth.urls_token')),
     path('admin/', admin.site.urls),
 ]
