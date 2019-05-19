@@ -19,6 +19,10 @@
     padding-right: 20px;
 }
 
+.smallCard_filter {
+    padding-right: 10px;
+}
+
 .smallCard_actionBlock,
 .smallCard_filters {
     display: flex;

@@ -17,10 +17,11 @@ const Likes = ({ likesCount, onClick }: IProps) => {
 
     return (
         <div className={styles.likes}>
-            <Typography component="p" className={styles.likes__count}>
-                {likesCount}
-            </Typography>
-            <IconButton aria-label="Add to favorites" onClick={onClick}>
+            {likesCount ?
+                <Typography component="p" className={styles.likes__count} color="secondary">
+                    {likesCount}
+                </Typography> : null}
+            <IconButton aria-label="Add to favorites" onClick={onClick} color="secondary">
                 <FavoriteIcon />
             </IconButton>
         </div>

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useQueryParam, StringParam } from 'use-query-params';
+import styles from './main.module.css';
 
 import { IEvent } from '../../common/types/event';
 import { ITag } from '../../common/types/tag';
@@ -9,13 +10,15 @@ import SmallCard from '../../components/card/smallCard';
 import Layout from '../../components/layout';
 import Search from '../../components/search';
 import Loading from '../../components/loading';
+import slugToIcon from '../../utils/slugToIcon';
+import slugToColorIcon from '../../utils/slugToColorIcon';
 
 interface IProps {
     count: number;
     events: IEvent[];
     loadingEvents: boolean;
     fetchEvents(payload: IFetchItemsRequest): void;
-    selectedTags: (ITag | undefined)[];
+    selectedTags: ITag[];
 }
 
 const COUNT_CARD = 5;
@@ -25,7 +28,7 @@ const Main: React.FC<IProps> = ({
     count,
     loadingEvents,
     fetchEvents,
-    selectedTags
+    selectedTags,
 }) => {
     const [offset, setOffset] = useState(0);
     const [search, setSearch] = useQueryParam('search', StringParam);
@@ -44,7 +47,8 @@ const Main: React.FC<IProps> = ({
             limit: COUNT_CARD,
             offset: 0,
             search: search || '',
-            reset: true
+            reset: true,
+            tags: selectedTags.map(tag => tag.slug),
         });
         setOffset(COUNT_CARD);
     }, [search, fetchEvents]);
@@ -78,14 +82,20 @@ const Main: React.FC<IProps> = ({
     return (
         <Layout>
             <Search value={search || ''} setQuery={setQuery}/>
-            главная страница
-            выбранные фильтры:
-            {selectedTags.map(selectedTag => {
-                if (!selectedTag) {
-                    return null;
-                }
-                return <div key={selectedTag.slug}>{selectedTag.title}</div>
-            })}
+            {selectedTags.length ? <div className={styles.filters}>
+                <div className={styles.chooseFilter}>Выбранные фильтры:</div>
+                {selectedTags.map(selectedTag => {
+                    if (!selectedTag) {
+                        return null;
+                    }
+                    return (
+                        <div className={styles.tag} key={selectedTag.slug} style={{ color: slugToColorIcon(selectedTag.slug)}}>
+                            <div className={styles.tagIcon}>{slugToIcon(selectedTag.slug)}</div>
+                            {selectedTag.title}
+                        </div>
+                    )
+                })}
+            </div> : null}
             {events && events.map(event => (
                 <SmallCard
                     key={event.slug}

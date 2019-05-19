@@ -40,12 +40,18 @@ class Theme extends Component<Props, State> {
     }
 }
 
+export interface SelectTags {
+    slug: string
+    checked: boolean
+}
+
+
 function mapStateToProps(state: SubStore) {
     const {selectedSlugs} = state.tags;
 
     return {selectedSlugs};
 }
 function mapDispatchToProps(dispatch: any) {
-    return {selectTags: ({slug, checked}: {slug: string, checked: boolean}) => dispatch(selectTags({slug, checked}))}
+    return {selectTags: ({slug, checked}: SelectTags) => dispatch(selectTags({slug, checked}))}
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Theme);

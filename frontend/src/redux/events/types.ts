@@ -9,7 +9,7 @@ export interface IFetchItemsRequest {
     search?: string;
     sortBy?: string;
     sortDirection?: SortDirection;
-    tag?: string;
+    tags?: string[];
     reset?: boolean;
 }
 
