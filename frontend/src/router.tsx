@@ -7,6 +7,7 @@ import Auth from './pages/auth';
 import Event from './pages/event';
 import Tags from './pages/tags';
 import Main from './pages/main';
+import Random from './pages/random';
 import NotFound from './pages/notFound';
 
 import {
