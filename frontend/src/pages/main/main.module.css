@@ -1,0 +1,23 @@
+.filters {
+    display: flex;
+    max-width: 400px;
+    margin: 25px auto;
+    flex-wrap: wrap;
+}
+
+.chooseFilter,
+.tag {
+    padding: 10px 10px 0 0;
+}
+
+.tag {
+    display: flex;
+}
+
+.tagIcon {
+    padding-right: 2px;
+}
+
+.tagIcon svg {
+    vertical-align: bottom;
+}

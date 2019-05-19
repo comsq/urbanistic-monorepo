@@ -1,6 +1,6 @@
 import slugs from '../constants/slugs';
 
-export default function slugToIcon(slug: string) {
+export default function slugToColorIcon(slug: string) {
     switch (slug) {
         case slugs.sport: {
             return '#005DAA';

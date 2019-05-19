@@ -25,11 +25,11 @@ function* fetchEventSaga(action: ActionType<typeof fetchEvent.request>) {
 }
 
 function* fetchEventsSaga(action: ActionType<typeof fetchEvents.request>) {
-    const { limit, offset, search, reset } = action.payload;
+    const { limit, offset, search, reset, tags } = action.payload;
 
     const url = events.list.build();
     const props = {
-        url: `${url}?limit=${limit}&offset=${offset}&search=${search}`,
+        url: `${url}?limit=${limit}&offset=${offset}&search=${search}&tags=${(tags||[]).join(',')}`,
         method: 'GET',
         data: action.payload
     };
