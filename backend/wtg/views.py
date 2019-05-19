@@ -9,7 +9,6 @@ from django_filters.rest_framework import (
 )
 from rest_framework import (
     filters,
-    generics,
     mixins,
     pagination,
     status,
@@ -84,11 +83,6 @@ class EventViewSet(mixins.ListModelMixin,
             return random.choice(self.queryset)
 
         return super().get_object()
-
-
-class UserCreateAPIView(viewsets.ViewSet, generics.CreateAPIView):
-    queryset = models.User.objects.all()
-    serializer_class = serializers.UserSerializer
 
 
 @api_view(['POST'])
