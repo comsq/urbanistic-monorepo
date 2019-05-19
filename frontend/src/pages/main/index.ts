@@ -2,6 +2,7 @@ import { IEventsStore } from "../../redux/events/types";
 import Main from './main';
 import { connect } from 'react-redux';
 import { fetchEvents } from '../../redux/events/actions';
+import { fetchTags } from '../../redux/tags/actions';
 import { ITag } from '../../common/types/tag';
 import { ITagsStore } from '../../redux/tags/types';
 
@@ -11,7 +12,8 @@ export interface SubStore {
 }
 
 const mapDispatchToProps = {
-    fetchEvents: fetchEvents.request
+    fetchEvents: fetchEvents.request,
+    fetchTags: fetchTags.request
 };
 
 const mapStateToProps = ({ events, tags }: SubStore) => ({

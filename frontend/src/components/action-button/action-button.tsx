@@ -4,8 +4,10 @@ import React from 'react';
 
 import styles from './action-button.module.css';
 
-const ActionButton = (props: ButtonProps) => (
-    <Button className={styles['action-button']} {...props} />
-);
+const ActionButton = (props: ButtonProps & { mix?: string }) => {
+    const className = props.mix ? styles['action-button'] + ' ' + props.mix : styles['action-button'];
+
+    return <Button className={className} {...props} />
+};
 
 export default ActionButton;
