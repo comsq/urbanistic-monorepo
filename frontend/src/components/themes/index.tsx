@@ -1,5 +1,7 @@
-import React, {Component} from 'react';
-import Theme from "./theme";
+import React, { Component } from 'react';
+
+import Theme from './theme';
+
 import styles from './themes.module.css';
 
 type Props = {

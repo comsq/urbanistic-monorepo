@@ -1,15 +1,14 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useQueryParam, StringParam } from 'use-query-params';
 
-import { IApiError } from '../../common/types/error';
 import { IEvent } from '../../common/types/event';
+import { ITag } from '../../common/types/tag';
 import { IFetchItemsRequest } from '../../redux/events/types';
 
 import SmallCard from '../../components/card/smallCard';
 import Layout from '../../components/layout';
 import Search from '../../components/search';
 import Loading from '../../components/loading';
-import { ITag } from "../../common/types/tag";
 
 interface IProps {
     count: number;
@@ -25,8 +24,8 @@ const Main: React.FC<IProps> = ({
     events,
     count,
     loadingEvents,
-    fetchEvents, selectedTags
-
+    fetchEvents,
+    selectedTags
 }) => {
     const [offset, setOffset] = useState(0);
     const [search, setSearch] = useQueryParam('search', StringParam);
@@ -65,7 +64,7 @@ const Main: React.FC<IProps> = ({
     }, [loadMore]);
 
     useEffect(() => {
-        handleScroll()
+        handleScroll();
 
         document.addEventListener('scroll', handleScroll);
 
@@ -89,9 +88,7 @@ const Main: React.FC<IProps> = ({
                 }
                 return <div key={selectedTag.slug}>{selectedTag.title}</div>
             })}
-            {loadingEvents ? (
-                <Loading />
-            ) : events && events.map(event => (
+            {events && events.map(event => (
                 <SmallCard
                     key={event.slug}
                     slug={event.slug}
@@ -103,6 +100,7 @@ const Main: React.FC<IProps> = ({
                     likesCount={event.likesCount}
                 />
             ))}
+            {loadingEvents && <Loading />}
         </Layout>
     )
 };
