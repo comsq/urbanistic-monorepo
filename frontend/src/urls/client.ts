@@ -9,6 +9,8 @@ export const tagsUrl = new Url('/tags/');
 
 export const authUrl = new Url('/auth/');
 
+export const randomUrl = new Url('/random');
+
 export const indexUrl = new Url('/');
 
 export const fbUrl = new Url(`https://www.facebook.com/v3.3/dialog/oauth?client_id=2245802555733171&redirect_uri=https://w-t-g.herokuapp.com&scope=email&response_type=code`);

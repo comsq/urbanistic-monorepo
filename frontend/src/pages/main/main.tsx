@@ -13,6 +13,9 @@ import Search from '../../components/search';
 import Loading from '../../components/loading';
 import slugToIcon from '../../utils/slugToIcon';
 import slugToColorIcon from '../../utils/slugToColorIcon';
+import {Link} from "react-router-dom";
+import {tagsUrl} from "../../urls/client";
+import FilterList from "@material-ui/core/SvgIcon/SvgIcon";
 import LogoWithOutWord from '../../components/layout/header/LogoWithoutWords';
 import GenerateCard from '../../components/card/generateCard';
 
