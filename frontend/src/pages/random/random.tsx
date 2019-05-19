@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
 import Shake from 'shake.js';
-import Button from '@material-ui/core/Button';
 
+import BackHeader from '../tags/backHeader';
 
 import CanvasLayout from './canvasLayout';
+import ActionButton from '../../components/action-button';
+import Layout from '../../components/layout';
+import SmallCard from '../../components/card/smallCard';
 
 import styles from './random.module.css';
-import Layout from "../../components/layout";
-import BackHeader from "../tags/backHeader";
-import SmallCard from "../../components/card/smallCard";
 
-interface IProps {
-}
+interface IProps { }
 
 interface IStateWithoutShake {
     canListen: false,
@@ -84,9 +83,9 @@ export default class Random extends Component<IProps, IState> {
                         <CanvasLayout isSleep={this.state.isSleep} isUpper={true}/>
                         <div className={styles.center}>
                             <div>Потряси телефон!</div>
-                            <Button variant="contained" color="primary" onClick={this.shakeEventDidOccur}>
+                            <ActionButton onClick={this.shakeEventDidOccur}>
                                 Потрясти
-                            </Button>
+                            </ActionButton>
                         </div>
                         <CanvasLayout isSleep={this.state.isSleep} isUpper={false}/>
                     </div>
