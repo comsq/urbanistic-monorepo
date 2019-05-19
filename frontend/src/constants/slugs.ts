@@ -5,5 +5,7 @@ export default {
     children: 'children',
     shopping: 'shopping',
     culture: 'culture',
-    masterClasses: 'master-classes'
+    masterClasses: 'master-classes',
+    free: 'free',
+    entertainment: 'entertainment',
 }

@@ -20,6 +20,12 @@ export default function slugToColorIcon(slug: string) {
         case slugs.shopping: {
             return '#ec8525';
         }
+        case slugs.free: {
+            return '#23EC37';
+        }
+        case slugs.entertainment: {
+            return '#713f8f';
+        }
         case slugs.volunteerism: {
             return '#2fbc80';
         }
