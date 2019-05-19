@@ -1,0 +1,37 @@
+.buttons {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: center;
+    justify-content: space-around;
+    margin-top: 35%;
+}
+
+.buttons > button {
+    text-transform: none;
+    width: 400px;
+    justify-content: left;
+    padding-left: 100px;
+}
+
+.buttons > .fb {
+    background-image: linear-gradient(#4260B4, #4260B4);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    text-align: left;
+    padding-left: 110px;
+}
+
+.buttons > .vk {
+    background-image: linear-gradient(354.54deg, #3F6690 20.33%, #6186AD 79.67%);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    text-align: left;
+}
+
+.buttons > .gh {
+    background-image: linear-gradient(354.54deg, #24292e 20.33%, #24292e 79.67%);
+    background-color: #24292e;
+    text-align: left;
+    padding-left: 105px;
+}

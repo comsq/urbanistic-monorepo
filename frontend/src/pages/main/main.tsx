@@ -25,8 +25,9 @@ const CommaArrayParam = {
 interface IProps {
     count: number;
     events: IEvent[];
-    loadingEvents: boolean;
+    loadingEvent: boolean;
     fetchEvents(payload: IFetchItemsRequest): void;
+    fetchTags(payload: {}): void;
     selectedTags: ITag[];
 }
 
@@ -35,10 +36,15 @@ const COUNT_CARD = 5;
 const Main: React.FC<IProps> = ({
     events,
     count,
-    loadingEvents,
+    loadingEvent,
     fetchEvents,
+    fetchTags,
     selectedTags,
 }) => {
+    useEffect(() => {
+        fetchTags({})
+    }, [fetchTags]);
+
     const [offset, setOffset] = useState(0);
     const [search, setSearch] = useQueryParam('search', StringParam);
     const [tags, setTags] = useQueryParam('tags', CommaArrayParam);
@@ -77,10 +83,10 @@ const Main: React.FC<IProps> = ({
         const heightOffset = window.innerHeight + document.documentElement.scrollTop;
         const scrollOffset = document.documentElement.scrollHeight - 200;
 
-        if (count > offset && heightOffset > scrollOffset && !loadingEvents) {
+        if (count > offset && heightOffset > scrollOffset && !loadingEvent) {
             loadMore();
         }
-    }, [count, offset, loadingEvents]);
+    }, [count, offset, loadingEvent, loadMore]);
 
     useEffect(() => {
         document.addEventListener('scroll', handleScroll);
@@ -123,7 +129,7 @@ const Main: React.FC<IProps> = ({
                     likesCount={event.likesCount}
                 />
             ))}
-            {loadingEvents && <Loading />}
+            {loadingEvent ? <Loading /> : null}
         </Layout>
     )
 };

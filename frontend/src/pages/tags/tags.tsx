@@ -16,7 +16,10 @@ export default class Tags extends Component<TagsListProps> {
             </Layout>
         </div>;
     }
+
     componentDidMount() {
-        this.props.fetchTags({});
+        if (!this.props.tags || !this.props.tags.length) {
+            this.props.fetchTags({});
+        }
     }
 }
