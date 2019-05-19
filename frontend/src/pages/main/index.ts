@@ -5,7 +5,7 @@ import { fetchEvents } from '../../redux/events/actions';
 import { ITag } from '../../common/types/tag';
 import { ITagsStore } from '../../redux/tags/types';
 
-interface SubStore {
+export interface SubStore {
     events: IEventsStore
     tags: ITagsStore
 }
