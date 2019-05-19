@@ -1,6 +1,6 @@
 import { getType } from 'typesafe-actions';
 
-import { EventsActions, fetchEvent, fetchEvents, participate } from './actions';
+import { EventsActions, fetchEvent, fetchEvents, likeEvent, participate } from './actions';
 import { IEventsStore } from './types';
 
 const initialState: IEventsStore = {
@@ -105,6 +105,24 @@ export default function (state = initialState, action: EventsActions) {
                 participationRequested: false,
                 participationError: action.payload
             }
+        }
+        case getType(likeEvent.success): {
+            const { slug } = action.payload;
+
+            const wasLiked = Boolean(
+                state.eventsMap[slug] && state.eventsMap[slug].isLiked
+            );
+
+            return {
+                ...state,
+                eventsMap: {
+                    ...state.eventsMap,
+                    [slug]: {
+                        ...state.eventsMap[slug],
+                        isLiked: !wasLiked
+                    }
+                }
+            };
         }
         default: {
             return state;

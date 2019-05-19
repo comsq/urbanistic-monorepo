@@ -27,6 +27,10 @@ export interface IParticipationRequest {
     slug: string;
 }
 
+export interface ILikeRequest {
+    slug: string;
+}
+
 export interface IEventsStore {
     count: number;
     eventsMap: IDictionary<IEvent>;

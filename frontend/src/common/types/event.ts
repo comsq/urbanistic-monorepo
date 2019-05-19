@@ -14,6 +14,7 @@ export interface IEvent extends IEventParams {
     description: string;
     date: number; // unix millis
     image: string;
+    isLiked: boolean;
     isParticipant: boolean;
     likesCount: number | null;
     maxParticipantsCount: number | null;

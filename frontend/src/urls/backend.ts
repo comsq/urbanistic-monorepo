@@ -3,6 +3,7 @@ import { Url } from '../utils/url';
 
 export const events = {
     item: new Url<IEventParams>('/events/:slug/'),
+    like: new Url<IEventParams>('/like/events/:slug'),
     list: new Url('/events/'),
     participate: new Url<IEventParams>('/participate/events/:slug'),
     random: new Url('/events/random/')

@@ -4,7 +4,7 @@ import { ActionType } from 'typesafe-actions';
 import { events } from '../../urls/backend';
 import fetch from '../../common/fetch';
 
-import { fetchEvent, fetchEvents, participate } from './actions';
+import { fetchEvent, fetchEvents, likeEvent, participate } from './actions';
 
 function* fetchEventSaga(action: ActionType<typeof fetchEvent.request>) {
     const { slug } = action.payload;
@@ -48,6 +48,24 @@ function* fetchEventsSaga(action: ActionType<typeof fetchEvents.request>) {
     }
 }
 
+function* likeEventSaga(action: ActionType<typeof likeEvent.request>) {
+    const { slug } = action.payload;
+
+    const url = events.like.build({ slug });
+    const props = {
+        url,
+        method: 'POST'
+    };
+
+    try {
+        yield call(fetch, props);
+
+        yield put(likeEvent.success({ slug }));
+    } catch (error) {
+        yield put(likeEvent.failure(error));
+    }
+}
+
 function* participateSaga(action: ActionType<typeof participate.request>) {
     const { slug } = action.payload;
 
@@ -70,6 +88,7 @@ export default function*() {
     yield all([
         takeLatest(fetchEvents.request, fetchEventsSaga),
         takeLatest(fetchEvent.request, fetchEventSaga),
+        takeLatest(likeEvent.request, likeEventSaga),
         takeEvery(participate.request, participateSaga)
     ]);
 }

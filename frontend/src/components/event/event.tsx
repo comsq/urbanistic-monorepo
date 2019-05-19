@@ -67,7 +67,7 @@ const Event = (props: IProps) => {
             </p>
             <div className={styles.event__controls}>
                 <GoButton slug={event.slug} />
-                <Likes likesCount={event.likesCount} />
+                <Likes slug={event.slug} />
             </div>
             {event.participantsCount ? (
                 <p className={styles.event__participants}>

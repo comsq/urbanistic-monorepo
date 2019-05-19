@@ -73,7 +73,7 @@ const SmallCard: React.FC<Props> = ({
                             </RouterLink>
                         ))}
                     </div>
-                    <Likes likesCount={likesCount} />
+                    <Likes slug={slug} />
                 </div>
             </CardContent>
         </Card>
