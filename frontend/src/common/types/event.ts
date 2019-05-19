@@ -12,12 +12,13 @@ export interface IEventBriefInfo {
 
 export interface IEvent extends IEventParams {
     description: string;
-    title: string
-    tags: ITag[];
-    likesCount: number | null;
     date: number; // unix millis
     image: string;
+    isParticipant: boolean;
+    likesCount: number | null;
+    maxParticipantsCount: number | null;
     participantsCount: number | null;
-    maxParticipants: number | null;
     similarWith?: IEventBriefInfo[];
+    tags: ITag[];
+    title: string
 }

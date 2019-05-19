@@ -35,6 +35,15 @@
     margin: -30px -10px 0;
 }
 
+.event__participants
+{
+    margin-top: 8px;
+
+    font-size: 14px;
+    line-height: 16px;
+    color: #545469;
+}
+
 .event__tags
 {
     width: calc(100% + 10px);

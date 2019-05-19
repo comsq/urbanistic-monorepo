@@ -1,6 +1,6 @@
 import { getType } from 'typesafe-actions';
 
-import { EventsActions, fetchEvent, fetchEvents } from './actions';
+import { EventsActions, fetchEvent, fetchEvents, participate } from './actions';
 import { IEventsStore } from './types';
 
 const initialState: IEventsStore = {
@@ -13,6 +13,8 @@ const initialState: IEventsStore = {
     fetchEventError: null,
     limit: 10,
     offset: 0,
+    participationRequested: false,
+    participationError: null,
     search: '',
     sortBy: 'date',
     sortDirection: 'ASC',
@@ -70,6 +72,39 @@ export default function (state = initialState, action: EventsActions) {
                 fetchItemsStarted: false,
                 fetchItemsError: action.payload
             };
+        }
+        case getType(participate.request): {
+            return {
+                ...state,
+                participationRequested: true,
+                participationError: null
+            };
+        }
+        case getType(participate.success): {
+            const { slug } = action.payload;
+            const prevParticipantsCount =
+                (state.eventsMap[slug] && state.eventsMap[slug].participantsCount) || 0;
+
+            return {
+                ...state,
+                eventsMap: {
+                    ...state.eventsMap,
+                    [slug]: {
+                        ...state.eventsMap[slug],
+                        isParticipant: true,
+                        participantsCount: prevParticipantsCount + 1
+                    }
+                },
+                participationRequested: false,
+                participationError: null
+            };
+        }
+        case getType(participate.failure): {
+            return {
+                ...state,
+                participationRequested: false,
+                participationError: action.payload
+            }
         }
         default: {
             return state;

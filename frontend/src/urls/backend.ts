@@ -2,9 +2,10 @@ import { IEventParams } from '../common/types/event';
 import { Url } from '../utils/url';
 
 export const events = {
+    item: new Url<IEventParams>('/events/:slug/'),
     list: new Url('/events/'),
-    random: new Url('/events/random/'),
-    item: new Url<IEventParams>('/events/:slug/')
+    participate: new Url<IEventParams>('/participate/events/:slug'),
+    random: new Url('/events/random/')
 };
 
 export const tags = {
