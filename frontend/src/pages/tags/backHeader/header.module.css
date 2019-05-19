@@ -1,0 +1,21 @@
+.arrow {
+    color: #fff;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.backHeader {
+    height: 64px;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(170deg, #00A1B5, #1B16EA);
+}
+
+.text {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 500;
+}

@@ -9,12 +9,14 @@ import SmallCard from '../../components/card/smallCard';
 import Layout from '../../components/layout';
 import Search from '../../components/search';
 import Loading from '../../components/loading';
+import { ITag } from "../../common/types/tag";
 
 interface IProps {
     count: number;
     events: IEvent[];
     loadingEvents: boolean;
     fetchEvents(payload: IFetchItemsRequest): void;
+    selectedTags: (ITag | undefined)[];
 }
 
 const COUNT_CARD = 5;
@@ -23,7 +25,8 @@ const Main: React.FC<IProps> = ({
     events,
     count,
     loadingEvents,
-    fetchEvents
+    fetchEvents, selectedTags
+
 }) => {
     const [offset, setOffset] = useState(0);
     const [search, setSearch] = useQueryParam('search', StringParam);
@@ -78,6 +81,14 @@ const Main: React.FC<IProps> = ({
     return (
         <Layout>
             <Search value={search || ''} setQuery={setQuery}/>
+            главная страница
+            выбранные фильтры:
+            {selectedTags.map(selectedTag => {
+                if (!selectedTag) {
+                    return null;
+                }
+                return <div key={selectedTag.slug}>{selectedTag.title}</div>
+            })}
             {loadingEvents ? (
                 <Loading />
             ) : events && events.map(event => (

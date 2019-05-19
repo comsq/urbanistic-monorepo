@@ -3,6 +3,7 @@ import styles from './header.module.css';
 import FilterList from '@material-ui/icons/FilterList';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Logo from './Logo';
+import {tagsUrl} from '../../../urls/client';
 import {Link} from "react-router-dom";
 
 export default class Header extends Component {
@@ -11,7 +12,7 @@ export default class Header extends Component {
             <header className={styles.header}>
                 <Logo />
                 <div className={styles.rightBlock}>
-                    <Link to="/filters" >
+                    <Link to={tagsUrl.template} >
                         <div onClick={this.onFilterClick} className={styles.filter}>
                             <FilterList fontSize="inherit" className={styles.filterIcon}/>
                         </div>

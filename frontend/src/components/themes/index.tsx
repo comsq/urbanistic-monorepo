@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import CustomCheckbox from './customCheckbox';
-
+import Theme from "./theme";
 import styles from './themes.module.css';
 
 type Props = {
@@ -16,13 +15,9 @@ export default class Themes extends Component<Props> {
 
         return (
             <div className={styles.themes}>
-                {themes.map(theme => (
-                    <CustomCheckbox
-                        key={theme.slug}
-                        slug={theme.slug}
-                        title={theme.title}
-                    />
-                ))}
+                {themes.map(theme => <div className={styles.theme} key={theme.slug}>
+                    <Theme slug={theme.slug} title={theme.title} />
+                </div>)}
             </div>
         );
     }
