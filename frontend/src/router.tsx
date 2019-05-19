@@ -15,6 +15,7 @@ import {
     eventUrl,
     indexUrl,
     tagsUrl,
+    randomUrl,
 } from './urls/client';
 
 const Router = () => (
@@ -23,6 +24,7 @@ const Router = () => (
             <Route path={createEventUrl.template} component={CreateEvent}/>
             <Route path={eventUrl.template} component={Event}/>
             <Route path={tagsUrl.template} component={Tags}/>
+            <Route path={randomUrl.template} component={Random}/>
             <Route path={authUrl.template} component={Auth}/>
             <Route exact path={indexUrl.template} component={Main}/>
             <Route component={NotFound}/>
