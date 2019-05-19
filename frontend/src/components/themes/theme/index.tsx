@@ -31,8 +31,7 @@ class Theme extends Component<Props, State> {
     }
 }
 
-function mapStateToProps() {return {}}
 function mapDispatchToProps(dispatch: any) {
     return {selectTags: ({slug, checked}: {slug: string, checked: boolean}) => dispatch(selectTags({slug, checked}))}
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Theme);
+export default connect(null, mapDispatchToProps)(Theme);

@@ -1,5 +1,7 @@
 import { createAsyncAction, ActionType } from 'typesafe-actions';
 
+import { } from './types'
+
 export const fetchTags = createAsyncAction(
     'tags/FETCH_REQUEST',
     'tags/FETCH_RESPONSE',
