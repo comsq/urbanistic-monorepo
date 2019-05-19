@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
 const W = document.body.clientWidth / 2;
-const H = window.innerHeight / 2 - 100;
+const H = (window.innerHeight - 89 - 60) / 2 - 100;
 const mainWord = "кудасходить";
 const letterInX = 18;
 const letterInY = 20;
@@ -81,8 +81,7 @@ function moveLetters(ctx: any, letters: any, stepInMs=10, timeout=3000, duration
             setTimeout(cb, stepInMs);
         }
     };
-    redrawLetters(ctx, letters, alpha);
-    setTimeout(cb, duration);
+    cb();
 }
 
 function initialization(canvas: any, isUpper: boolean) {
@@ -93,26 +92,27 @@ function initialization(canvas: any, isUpper: boolean) {
     canvas.height = H;
     if (!isUpper) {
         canvas.style.top = '50%';
-    } else {
-        canvas.style.display = 'block';
     }
     const ctx = canvas.getContext("2d");
     const letters = createLetters(canvas);
-    moveLetters(ctx, letters);
+    redrawLetters(ctx, letters, 1);
 
-    return canvas;
+    return { ctx, letters };
 }
 
 interface IState {
 }
 
 interface IProps {
-    isUpper: boolean
+    isUpper: boolean,
+    isSleep: boolean
 }
 
 export default class CanvasLayout extends Component<IProps, IState> {
 
     myRef: any;
+    ctx: any;
+    letters: any;
 
     constructor(props: IProps) {
         super(props);
@@ -120,7 +120,16 @@ export default class CanvasLayout extends Component<IProps, IState> {
     }
 
     componentDidMount(): void {
-        initialization(this.myRef.current, this.props.isUpper);
+        const { ctx, letters } = initialization(this.myRef.current, this.props.isUpper);
+        this.ctx = ctx;
+        this.letters = letters;
+    }
+
+    shouldComponentUpdate(nextProps: any, nextState: any) {
+        if (nextProps.isSleep) {
+            moveLetters(this.ctx, this.letters);
+        }
+        return true;
     }
 
     render() {
