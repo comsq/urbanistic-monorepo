@@ -3,6 +3,13 @@
     margin: -10px;
 }
 
+.canvas {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+}
+
 .center {
     width: 100%;
     position: relative;
