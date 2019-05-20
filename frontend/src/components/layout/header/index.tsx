@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import styles from './header.module.css';
 import FilterList from '@material-ui/icons/FilterList';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Logo from './Logo';
+import Logo from './logo';
 import {tagsUrl, authUrl} from '../../../urls/client';
 import {Link} from "react-router-dom";
 

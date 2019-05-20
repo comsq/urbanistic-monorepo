@@ -1,4 +1,4 @@
-import SmallCard from './smallCard'
+import SmallCard from './small-card'
 import { connect } from 'react-redux';
 import { selectTags } from '../../../redux/tags/actions';
 import {SelectTags} from "../../themes/theme";

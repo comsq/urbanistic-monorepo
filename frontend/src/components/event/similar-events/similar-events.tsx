@@ -2,9 +2,9 @@ import React from 'react';
 
 import { IEvent } from '../../../common/types/event';
 
-import Card from '../../card/smallCard';
+import Card from '../../card/small-card';
 
-import styles from './similarEvents.module.css';
+import styles from './similar-events.module.css';
 
 interface IProps {
     similarWith: IEvent['similarWith']

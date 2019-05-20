@@ -6,7 +6,7 @@ import {
     selectEvent,
     selectEventFetchStarted,
     selectEventFetchError
-} from '../../selectors/event';
+} from '../../redux/selectors/event';
 
 import Event from './event';
 

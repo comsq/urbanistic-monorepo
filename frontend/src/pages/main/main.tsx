@@ -7,14 +7,14 @@ import { IEvent } from '../../common/types/event';
 import { ITag } from '../../common/types/tag';
 import { IFetchItemsRequest } from '../../redux/events/types';
 
-import SmallCard from '../../components/card/smallCard';
+import SmallCard from '../../components/card/small-card';
 import Layout from '../../components/layout';
 import Search from '../../components/search';
 import Loading from '../../components/loading';
-import slugToIcon from '../../utils/slugToIcon';
-import slugToColorIcon from '../../utils/slugToColorIcon';
-import LogoWithOutWord from '../../components/layout/header/LogoWithoutWords';
-import GenerateCard from '../../components/card/generateCard';
+import slugToIcon from '../../utils/slug-to-icon';
+import slugToColorIcon from '../../utils/slug-to-color-icon';
+import LogoWithOutWord from '../../components/layout/header/logo-without-words';
+import GenerateCard from '../../components/card/generate-card';
 import {IAuthRequest, IAuthStorage} from "../../redux/session/types";
 
 const CommaArrayParam = {

@@ -1,4 +1,4 @@
-import { RootState } from '../redux/types';
+import { RootState } from '../types';
 
 export const selectEvent = (state: RootState, slug: string) => state.events.eventsMap[slug];
 

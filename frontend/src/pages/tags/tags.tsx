@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Themes from '../../components/themes';
-import BackHeader from './backHeader';
+import BackHeader from './back-header';
 import Layout from "../../components/layout";
 import styles from './tags.module.css';
 import {DispatchProps, StateProps} from "../tags";

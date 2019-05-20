@@ -14,7 +14,7 @@ import {eventUrl, indexUrl} from '../../../urls/client';
 
 import Likes from '../../likes';
 
-import styles from './smallCard.module.css';
+import styles from './small-card.module.css';
 
 
 export interface SelectTags {
