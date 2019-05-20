@@ -2,7 +2,7 @@ import React from 'react';
 
 import ActionButton from '../../components/action-button';
 import Layout from '../../components/layout';
-import BackHeader from '../tags/backHeader';
+import BackHeader from '../tags/back-header';
 
 import { vkUrl, ghUrl } from '../../urls/client';
 

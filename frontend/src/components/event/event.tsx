@@ -5,13 +5,13 @@ import { RouteComponentProps } from 'react-router';
 import { IApiError } from '../../common/types/error';
 import { IEvent } from '../../common/types/event';
 import { ITag } from '../../common/types/tag';
-import slugToColorIcon from '../../utils/slugToColorIcon';
+import slugToColorIcon from '../../utils/slug-to-color-icon';
 
 import BackArrow from '../back-arrow';
 import GoButton from '../go-button';
 import Likes from '../likes';
 import Loading from '../loading';
-import SimilarEvents from './similarEvents';
+import SimilarEvents from './similar-events';
 
 import styles from './event.module.css';
 

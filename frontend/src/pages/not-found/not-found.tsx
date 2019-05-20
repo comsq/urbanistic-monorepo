@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../../components/layout';
-import styles from './notFound.module.css';
-import LogoWithOutWord from '../../components/layout/header/LogoWithoutWords';
+import styles from './not-found.module.css';
+import LogoWithOutWord from '../../components/layout/header/logo-without-words';
 
 
 

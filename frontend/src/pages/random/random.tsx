@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import Shake from 'shake.js';
 
-import BackHeader from '../tags/backHeader';
+import BackHeader from '../tags/back-header';
 
-import CanvasLayout from './canvasLayout';
+import CanvasLayout from './canvas-layout';
 import ActionButton from '../../components/action-button';
 import Layout from '../../components/layout';
-import SmallCard from '../../components/card/smallCard';
+import SmallCard from '../../components/card/small-card';
 
 import styles from './random.module.css';
 

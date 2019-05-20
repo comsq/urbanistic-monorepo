@@ -1,6 +1,6 @@
 import React from 'react';
-import GenerateCardIcon from './generateCardIcon';
-import styles from './generateCard.module.css';
+import GenerateCardIcon from './generate-card-icon';
+import styles from './generate-card.module.css';
 import { Link } from 'react-router-dom';
 
 const GenerateCard = ({}) => (

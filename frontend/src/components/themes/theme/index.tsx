@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Checkbox from "@material-ui/core/Checkbox";
-import CheckboxIcon from '../checkboxIcon';
+import CheckboxIcon from '../checkbox-icon';
 import {connect} from 'react-redux';
 import {selectTags} from "../../../redux/tags/actions";
 import {SubStore} from "../../../pages/main";

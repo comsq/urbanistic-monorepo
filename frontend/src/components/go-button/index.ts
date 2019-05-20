@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { RootState } from '../../redux/types';
 import { participate } from '../../redux/events/actions';
-import { selectEvent } from '../../selectors/event';
+import { selectEvent } from '../../redux/selectors/event';
 
 import GoButton from './go-button';
 

@@ -2,17 +2,15 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 
-import CreateEvent from './pages/createEvent';
 import Auth from './pages/auth';
 import Event from './pages/event';
 import Tags from './pages/tags';
 import Main from './pages/main';
 import Random from './pages/random';
-import NotFound from './pages/notFound';
+import NotFound from './pages/not-found';
 
 import {
     authUrl,
-    createEventUrl,
     eventUrl,
     indexUrl,
     tagsUrl,
@@ -22,7 +20,6 @@ import {
 const Router = () => (
     <BrowserRouter>
         <Switch>
-            <Route path={createEventUrl.template} component={CreateEvent}/>
             <Route path={eventUrl.template} component={Event}/>
             <Route path={tagsUrl.template} component={Tags}/>
             <Route path={randomUrl.template} component={Random}/>
